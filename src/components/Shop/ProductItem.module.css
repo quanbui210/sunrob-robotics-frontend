@@ -1,0 +1,20 @@
+.item {
+  margin-bottom: 90px;
+}
+
+.price {
+  border-radius: 30px;
+  padding: 0.15rem 1.5rem;
+  background-color: #3a3a3a;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.item p {
+  color: #3a3a3a;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}

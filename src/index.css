@@ -1,0 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Source Code Pro', monospace;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(83, 83, 83);
+}
+

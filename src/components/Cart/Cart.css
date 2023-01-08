@@ -1,0 +1,42 @@
+.cart-badge {
+    font-size: 8px;
+    background-color: #050031;
+    color: #ccc;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.cart-icon {
+    font-size: 36px !important;
+}
+
+.empty {
+    font-size: 15px;
+    padding: 30px;
+    margin-top: 60px !important;
+}
+
+.checkout-btn {
+    border: 1px solid #ccc;
+    padding: 18px;
+    background-color: rgba(255, 123, 0, 0.884)
+
+}
+
+.checkout-icon {
+    font-size: 13px !important;
+    margin-left: 3px;
+}
+
+.cart-list {
+    overflow: scroll;
+}
+
+.total {
+    margin-top: 50px;
+    justify-content: flex-end;
+}
+
+.cart-ul {
+    overflow: scroll !important;
+}
