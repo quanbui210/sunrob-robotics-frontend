@@ -1,4 +1,4 @@
-import Card from '../UI/Card';
+
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,6 +14,7 @@ import './Cart.css'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { toggleActions } from '../../store/toggle-slice';
 import { cartActions } from '../../store/cart-slice';
+import Tooltip from '@mui/material/Tooltip';
 
 const Cart = (props) => {
   const cartQuantity = useSelector(state => state.cart.totalQuantity)
@@ -84,11 +85,13 @@ const Cart = (props) => {
   return (
     
     <React.Fragment key='right'>
+    <Tooltip title='View Your Cart / Checkout'>
     <Button onClick={toggleDrawer('right', true)} className={btnClasses}>
       <Badge className='cart-badge'  badgeContent={cartQuantity} color="warning">
         <ShoppingCartIcon className='cart-icon'/>
       </Badge>
     </Button>
+    </Tooltip>
     {!cartIsEmpty ?  <Drawer 
       className='cart-ul'
       anchor='right'
@@ -96,7 +99,6 @@ const Cart = (props) => {
       onClose={toggleDrawer('right', false)}
     >
      {cartItems.map(item => (
-      <ul>
           <CartItem
             className='card-list'
             key={item.id}
@@ -109,7 +111,6 @@ const Cart = (props) => {
               image: item.image
             }}
           />
-      </ul>
           ))}
             <p className='total'>Total: ${total.toFixed(2)}</p>
             <button onClick={checkoutHandler} className='checkout-btn'>Checkout 
