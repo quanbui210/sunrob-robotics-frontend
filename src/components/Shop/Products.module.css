@@ -12,4 +12,5 @@
   display: grid;
   margin: 30px;
   grid-template-columns: auto auto auto;
+  margin-left: 100px;
 }
