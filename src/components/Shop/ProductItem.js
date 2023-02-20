@@ -41,7 +41,7 @@ const ProductItem = (props) => {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <span className="card-price">${price.toFixed(2)} / kpl</span>
+          <span className="card-price">${price} / kpl</span>
           <p className="card-desc">
             {description}
           </p>

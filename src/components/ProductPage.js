@@ -1,51 +1,34 @@
 import { useParams, useNavigate } from "react-router"
 import './ProductPage.css'
-import { useState } from "react";
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import { useState, useEffect } from "react";
 import Grid from '@mui/material/Grid';
 import { Image } from "@mui/icons-material";
-import Image1 from '../assets/robottoys.png'
-import Image2 from '../assets/robot2.png'
-import Image3 from '../assets/robot3.png'
-import Image4 from '../assets/robot5.png'
-import Image5 from '../assets/robottoys2.png'
 import { Button } from "@mui/material";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useDispatch } from "react-redux";
 import { cartActions } from "../store/cart-slice";
+import axios from 'axios';
+
+
 
 
 
 export default  function ProductPage () { 
     const navigate = useNavigate()
     const {id} = useParams()
-    console.log(Image1)
     const dispatch = useDispatch()
-    let imageSrc;
-    let inStock; 
-    
-    if (id.substring(1) === '1') {
-        imageSrc = Image1
-        inStock = false
-    } else if (id.substring(1) === '2') {
-        imageSrc = Image2
-        inStock = true
-    } else if (id.substring(1) === '3') {
-        imageSrc = Image3
-        inStock = false
-    } else if (id.substring(1) === '4') {
-        imageSrc = Image4
-        inStock = true
-    } else if (id.substring(1) === '5') {
-        imageSrc = Image5
-        inStock = true
-    } else if (id.substring(1) === '6') {
-        imageSrc = Image2
-        inStock = false
-    } 
+    const [product, setProduct] = useState([])
+  useEffect(()=> {
+    axios.get(`https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json`)
+    .then(response => {
+      let fetchedData = response.data
+      setProduct(fetchedData)
+      console.log(product)
+    })
+  }, [])
+
+   
     
     const addToCartHandler = () => {
         dispatch(
@@ -53,13 +36,13 @@ export default  function ProductPage () {
             id: id,
             title: `Robot ${id.substring(1)}`,
             price: 5,
-            image: imageSrc
+            image: ''
           })
         );
       };
 
-    let stockColor = inStock ? 'stock' : 'out-stock'
-    const disabled = inStock ? false : true
+    let stockColor = product.available ? 'stock' : 'out-stock'
+    const disabled = product.available ? false : true
     return <div className="page-container">
         <Grid container spacing={2}>
             <Grid item xs={6}>
@@ -67,19 +50,19 @@ export default  function ProductPage () {
                     navigate('..')
                 }}><KeyboardReturnIcon/>Back</Button>
                 <div>
-                    <img src={imageSrc} className='page-img'/>
+                    <img src={product.image} className='page-img'/>
                 </div>
             </Grid>
-            <Grid item xs={4} className='page'>
+            <Grid item xs={5} className='page'>
                 <h1>Robot {id.substring(1)}</h1>
                 <div className="info-container">
-                    <h3><b>PRICE: €5 <a className="sale">(-15%)</a></b></h3>
+                    <h3><b>PRICE: {product.price} <a className="sale">(-15%)</a></b></h3>
                     <p><a>FREE delivery</a> <b>Wednesday, March 1</b> on eligible first order. Order within <a>15 hrs 28 mins</a></p>
                     
                     <p className="deliver">
                     <LocationOnIcon className="location-icon"/>    Deliver to Finland
                     </p>
-                    <h3 className={stockColor}>{inStock ? 'In Stock: >10pcs' : 'Out Of Stock'}</h3>
+                    <h3 className={stockColor}>{product.available ? 'In Stock: >10pcs' : 'Out Of Stock'}</h3>
                 </div>
                 <p>Suitable for children ages 3 and up, these toys make a great gift for any child interested in robotics and STEM education.</p>
                 <h1>About this item:</h1>
