@@ -31,6 +31,7 @@
     float: right;
     color: rgb(255, 255, 255) !important;
     font-size: 12px !important;
+    min-width: 50px;
 }
 
 .card-btn:hover {
@@ -47,3 +48,21 @@
     color: rgb(117, 117, 117) !important;
     font-size: 12px;
 }
+
+.card-btn-view {
+    border: 1px solid #ccc !important;
+    background-color: rgba(130, 129, 129, 0.884) !important;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    padding: 8px !important;
+    float: right;
+    color: rgb(255, 255, 255) !important;
+    font-size: 12px !important;
+    min-width: 50px;
+}
+
+.card-btn-view:hover {
+    background-color: #ccc !important;
+}
+
+

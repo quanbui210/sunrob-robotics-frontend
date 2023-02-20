@@ -3,11 +3,14 @@ import classes from './ProductItem.module.css';
 import { useDispatch } from 'react-redux';
 import {cartActions} from '../../store/cart-slice'
 import Card from '@mui/material/Card';
-
+import { Link } from 'react-router-dom';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import './ProductItem.css'
+
+
+
 const ProductItem = (props) => {
   const { title, price, description, id, image } = props;
   const dispatch = useDispatch()
@@ -45,6 +48,7 @@ const ProductItem = (props) => {
         <Button  className='card-btn' size="small"  onClick={addToCartHandler}>
           Add to cart
         </Button>
+        <Link to={`/products/${id}`}><Button className='card-btn-view' size="small">View</Button></Link>
         </CardContent>
       </Card>
     </li>

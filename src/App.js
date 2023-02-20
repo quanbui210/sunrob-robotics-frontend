@@ -1,18 +1,35 @@
 import Cart from './components/Cart/Cart';
-import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import { useSelector } from 'react-redux';
 import CheckoutModal from './components/Stepper/CheckoutModal';
-function App() {
+import Layout from './components/Layout/Layout';
+import ProductPage from './components/ProductPage';
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
-  const showCart = useSelector(state => state.toggle.show)
-  console.log(showCart)
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout><Products/></Layout>
+  },
+  {
+    path: '/products/:id',
+    element: <Layout><ProductPage/></Layout>
+  }
+])
+
+
+function App() {
   return (
     <>
-      <Layout>
-        <Products />
-      </Layout>
-        <CheckoutModal></CheckoutModal>
+        <RouterProvider router={router}></RouterProvider>
+        <CheckoutModal/>
     </>
   );
 }

@@ -10,7 +10,7 @@ import Image5 from '../../assets/robottoys2.png'
 const DUMMY_PRODUCTS = [
   {
     id: 'p1',
-    price: 6,
+    price: 5,
     title: 'Robot1',
     description: 'Suitable for children ages 3 and up, these toys make a great gift for any child interested in robotics and STEM education.',
     image: Image
@@ -30,27 +30,30 @@ const DUMMY_PRODUCTS = [
     image: Image3
   },
   {
-    id: 'p5',
-    price: 5,
-    title: 'Robot4',
-    description: 'Suitable for children ages 3 and up, these toys make a great gift for any child interested in robotics and STEM education.',
-    image: Image5
-  },
-   {
-    id: 'p6',
+    id: 'p4',
     price: 5,
     title: 'Robot4',
     description: 'Suitable for children ages 3 and up, these toys make a great gift for any child interested in robotics and STEM education.',
     image: Image4
   },
    {
-    id: 'p7',
+    id: 'p5',
     price: 5,
-    title: 'Robot4',
+    title: 'Robot5',
+    description: 'Suitable for children ages 3 and up, these toys make a great gift for any child interested in robotics and STEM education.',
+    image: Image5
+  },
+   {
+    id: 'p6',
+    price: 5,
+    title: 'Robot6',
     description: 'Suitable for children ages 3 and up, these toys make a great gift for any child interested in robotics and STEM education.',
     image: Image2
   },
 ];
+
+
+console.log(JSON.stringify(DUMMY_PRODUCTS))
 
 
 const Products = (props) => {
