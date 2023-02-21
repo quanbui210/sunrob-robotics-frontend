@@ -5,6 +5,7 @@ import CheckoutModal from './components/Stepper/CheckoutModal';
 import Layout from './components/Layout/Layout';
 import ProductPage from './components/ProductPage';
 import { createRoot } from "react-dom/client";
+import { loader } from './components/ProductPage';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/products/:id',
-    element: <Layout><ProductPage/></Layout>
+    element: <Layout><ProductPage/></Layout>,
+    loader: loader
   }
 ])
 

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router"
+import { useParams, useNavigate, useLoaderData } from "react-router"
 import './ProductPage.css'
 import { useState, useEffect } from "react";
 import Grid from '@mui/material/Grid';
@@ -10,26 +10,17 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../store/cart-slice";
 import axios from 'axios';
 
-
-
-
-
 export default  function ProductPage () { 
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useDispatch()
     const [product, setProduct] = useState([])
-  useEffect(()=> {
-    axios.get(`https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json`)
-    .then(response => {
-      let fetchedData = response.data
+    const response = useLoaderData()
+    let fetchedData = response.data
+    useEffect(()=> {
       setProduct(fetchedData)
-      console.log(product)
-    })
-  }, [])
+     }, [])
 
-   
-    
     const addToCartHandler = () => {
         dispatch(
           cartActions.add({
@@ -86,4 +77,10 @@ export default  function ProductPage () {
             </Grid>
         </Grid>
     </div>
+}
+
+
+export function loader({params}) {
+    let response = axios.get(`https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products/${params.id}.json`)
+    return response
 }
