@@ -13,9 +13,6 @@
 }
 
 .page-button {
-    border: 2px solid #ada8a8 !important;
-    color: #f0a636;
-    background-color: #fff; 
     margin-top: 40px !important;
     float: right;
     padding: 16px;
@@ -23,8 +20,8 @@
 }
 
 .page-button:hover {
-    background-color: #8a8a8a !important;
-    color: #fefefe !important;
+    background-color: #d5d5d5 !important;
+    color: #f49c19 !important;
 }
 
 h1 {

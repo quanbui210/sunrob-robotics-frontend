@@ -49,7 +49,16 @@ const ProductItem = (props) => {
         <Button  className='card-btn' size="small"  onClick={addToCartHandler}>
           Add to cart
         </Button>
-        <Link to={`/products/${id}`}><Button className='card-btn-view' size="small">View</Button></Link>
+        <Link to={`/products/${id}`}>
+          <Button 
+            // onClick={()=> {
+            //   window.scrollTo(0, 0)
+            // }}
+            className='card-btn-view' 
+            size="small">
+              View
+          </Button>
+        </Link>
         </CardContent>
       </Card>
     </li>

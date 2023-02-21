@@ -18,6 +18,7 @@ export default  function ProductPage () {
     const response = useLoaderData()
     let fetchedData = response.data
     useEffect(()=> {
+      window.scrollTo(0,0)
       setProduct(fetchedData)
      }, [])
 
@@ -47,7 +48,7 @@ export default  function ProductPage () {
             <Grid item xs={5} className='page'>
                 <h1>Robot {id.substring(1)}</h1>
                 <div className="info-container">
-                    <h3><b>PRICE: {product.price} <a className="sale">(-15%)</a></b></h3>
+                    <h3><b>PRICE: ${product.price && product.price.toFixed(2)} <a className="sale">(-15%)</a></b></h3>
                     <p><a>FREE delivery</a> <b>Wednesday, March 1</b> on eligible first order. Order within <a>15 hrs 28 mins</a></p>
                     
                     <p className="deliver">
@@ -67,13 +68,27 @@ export default  function ProductPage () {
                         Let your children get creative and the results will be unexpected! The robot toy contains over 18 songs, 4 scientific tricks and two stories.
                     </li>
                 </ul>
-                <Button
-                    onClick={addToCartHandler}
-                    disabled={disabled}
-                    className="page-button"
+            {disabled ? <Button
+                onClick={addToCartHandler}
+                disabled
+                className="page-button"
+                style={{
+                    backgroundColor: "#ccc",
+                        pointerEvents: "none"
+                    }}
                 >
                     Add to Basket
-                </Button>
+                </Button> : <Button
+                    onClick={addToCartHandler}
+                    className="page-button"
+                    variant="contained"
+                    style={{
+                        backgroundColor: "#f49c19",
+                        cursor: "pointer"
+                    }}
+                >
+                Add to Basket
+            </Button>}
             </Grid>
         </Grid>
     </div>
