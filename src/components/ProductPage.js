@@ -33,10 +33,10 @@ export default  function ProductPage () {
     const addToCartHandler = () => {
         dispatch(
           cartActions.add({
-            id: id,
-            title: `Robot ${id.substring(1)}`,
-            price: 5,
-            image: ''
+            id,
+            title: product.title,
+            price: product.price,
+            image: product.image
           })
         );
       };

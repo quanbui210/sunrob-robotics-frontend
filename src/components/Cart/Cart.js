@@ -15,6 +15,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { toggleActions } from '../../store/toggle-slice';
 import { cartActions } from '../../store/cart-slice';
 import Tooltip from '@mui/material/Tooltip';
+import { useNavigate } from 'react-router';
 
 const Cart = (props) => {
   const cartQuantity = useSelector(state => state.cart.totalQuantity)
@@ -22,6 +23,7 @@ const Cart = (props) => {
   const [btnIsBumped, setBtnIsBumped] = useState(false)
   const [cartIsEmpty, setCartIsEmpty] = useState(true)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [state, setState] = useState({
     top: false,
     left: false,
@@ -41,6 +43,7 @@ const Cart = (props) => {
   const checkoutHandler = () => {
     dispatch(toggleActions.show())
     dispatch(cartActions.removeAllItems())
+    navigate('/')
   }
 
   const cartItems = useSelector(state => state.cart.items)

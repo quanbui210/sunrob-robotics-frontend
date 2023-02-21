@@ -15,7 +15,6 @@ const ProductItem = (props) => {
   const { title, price, description, id, image } = props;
   const dispatch = useDispatch()
 
-  console.log(image)
   const addToCartHandler = () => {
     dispatch(
       cartActions.add({
@@ -26,6 +25,8 @@ const ProductItem = (props) => {
       })
     );
   };
+
+
 
   return (
     <li className={classes.item}>
@@ -41,7 +42,7 @@ const ProductItem = (props) => {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <span className="card-price">${price} / kpl</span>
+          <span className="card-price">${price && price.toFixed(2)} / kpl</span>
           <p className="card-desc">
             {description}
           </p>

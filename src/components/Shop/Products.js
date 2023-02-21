@@ -17,7 +17,8 @@ const Products = (props) => {
           id: key,
           title: fetchedData[key].title,
           description: fetchedData[key].description,
-          image: fetchedData[key].image
+          image: fetchedData[key].image,
+          price: fetchedData[key].price
         })
       }
       setProducts(loadedProducts)

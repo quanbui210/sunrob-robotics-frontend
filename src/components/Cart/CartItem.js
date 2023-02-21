@@ -34,9 +34,9 @@ const CartItem = (props) => {
         <h3>{title}</h3>
         </div>
         <div className={classes.price}>
-          ${total.toFixed(2)}{' '}
+          ${total && total.toFixed(2)}{' '}
         </div>
-          <span className={classes.itemprice}>(${price.toFixed(2)}/item)</span>
+          <span className={classes.itemprice}>(${price && price.toFixed(2)}/item)</span>
       </header>
       <div className={classes.details}>
         <div className={classes.quantity}>
