@@ -68,6 +68,7 @@ const Cart = (props) => {
   const btnClasses =  `${styles.button} ${btnIsBumped ? styles.bump : ''}` 
   
   useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems))
     if (cartItems.length === 0) {
         setCartIsEmpty(true)
         return;
