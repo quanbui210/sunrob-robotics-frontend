@@ -2,10 +2,13 @@ import ProductItem from './ProductItem';
 import classes from './Products.module.css';
 import axios from 'axios';
 import {useState, useEffect} from 'react'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 const Products = (props) => {
   const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(()=> {
     axios.get('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products.json')
     .then(response => {
@@ -22,13 +25,19 @@ const Products = (props) => {
         })
       }
       setProducts(loadedProducts)
+      setIsLoading(false)
       console.log(products)
     })
   }, [])
   return (
     <section className={classes.products}>
       <h2 style={{marginBottom: '100px'}}>Our Robot Products</h2>
-      <ul>
+
+    {isLoading ?  
+    <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box> :  
+    <ul>
         {products.map((product) => (
           <ProductItem
           key={product.id}
@@ -39,7 +48,7 @@ const Products = (props) => {
           image={product.image}
         />
         ))}
-      </ul>
+      </ul>}
     </section>
   );
 };

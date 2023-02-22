@@ -46,13 +46,13 @@ export default  function ProductPage () {
                 </div>
             </Grid>
             <Grid item xs={5} className='page'>
-                <h1>Robot {id.substring(1)}</h1>
+                <h1>{product.title}</h1>
                 <div className="info-container">
                     <h3><b>PRICE: ${product.price && product.price.toFixed(2)} <a className="sale">(-15%)</a></b></h3>
                     <p><a>FREE delivery</a> <b>Wednesday, March 1</b> on eligible first order. Order within <a>15 hrs 28 mins</a></p>
                     
                     <p className="deliver">
-                    <LocationOnIcon className="location-icon"/>    Deliver to Finland
+                    <LocationOnIcon className="location-icon"/>Deliver to Finland
                     </p>
                     <h3 className={stockColor}>{product.available ? 'In Stock: >10pcs' : 'Out Of Stock'}</h3>
                 </div>

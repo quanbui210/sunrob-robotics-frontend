@@ -54,10 +54,11 @@ h1 {
 .deliver {
     font-size: 13px !important;
     color: rgb(122, 133, 200);
-    /* text-decoration: underline; */
+    text-decoration: underline; 
 }
 .location-icon {
     font-size: 12px !important;
+    margin-right: 5px;
 }
 .sale {
     font-size: 13px;

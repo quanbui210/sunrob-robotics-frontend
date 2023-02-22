@@ -14,7 +14,6 @@ import './ProductItem.css'
 const ProductItem = (props) => {
   const { title, price, description, id, image } = props;
   const dispatch = useDispatch()
-
   const addToCartHandler = () => {
     dispatch(
       cartActions.add({
