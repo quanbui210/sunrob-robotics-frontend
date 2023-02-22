@@ -31,6 +31,7 @@ const OrderHistory = () => {
       <Button className="go-back" onClick={() => {
         navigate('..')
       }}><KeyboardReturnIcon />Back</Button>
+      <h1 style={{textAlign:'center', color: '#333'}}>Order History</h1>
       {isLoading ? (
         <p>Loading orders...</p>
       ) : (
