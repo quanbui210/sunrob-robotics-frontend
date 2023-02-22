@@ -1,7 +1,7 @@
 # Sunrob-Robotics
 Demo Shopping Website for Sunrob Robotics (Frontend), a robotic company in Lappeenranta
 
-(Tech-Stack: React, Redux Toolkit, React-Router)
+(Tech-Stack: React, Redux Toolkit, React-Router, Firebase)
 
 Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 
