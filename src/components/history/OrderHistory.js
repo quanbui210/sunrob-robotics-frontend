@@ -58,7 +58,7 @@ const OrderHistory = () => {
                         <li>
                           Name: {order.userData.name}
                         </li>
-                        <li>Email: {order.userData.email}</li>
+                        <li>Email: {order.userData.email.replace(/(\w{1})[\w.-]+@([\w.]+\w)/, "$1******@$2")}</li>
                         <li>Address: {order.userData.address}</li>
                       </ul>
                       <footer className="blockquote-footer">
