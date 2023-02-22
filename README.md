@@ -1,7 +1,7 @@
 # Sunrob-Robotics
 Demo Shopping Website for Sunrob Robotics (Frontend), a robotic company in Lappeenranta
 
-(Tech-Stack: React, Redux Toolkit, React-Router)
+(Tech-Stack: React, Redux Toolkit, React-Router, Firebase)
 
 Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 
@@ -19,8 +19,10 @@ Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 
 # View Product Page
 
-![Screenshot 2023-02-20 at 21 32 18](https://user-images.githubusercontent.com/89993167/220186215-c6e80c8b-b2a6-494d-848d-cd153e6f441f.png)
+![Screenshot 2023-02-22 at 9 48 27](https://user-images.githubusercontent.com/89993167/220556367-82079fcb-8861-4c28-a0ed-2296bb43f7e4.png)
+
 1. Product In Stock
 
-![Screenshot 2023-02-20 at 21 32 43](https://user-images.githubusercontent.com/89993167/220186233-bb3a756f-defc-4462-b720-ad9c9aa13159.png)
+![Screenshot 2023-02-22 at 9 49 16](https://user-images.githubusercontent.com/89993167/220556394-1b935432-1c91-4066-8a4c-1606bd5aaf5e.png)
+
 2. Product Out of Stock
