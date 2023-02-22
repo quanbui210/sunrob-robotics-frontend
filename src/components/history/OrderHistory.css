@@ -1,0 +1,36 @@
+.history-card {
+    border: 1px solid #333;
+    width: 100%;
+    background-color: #fff;
+    margin: 50px auto;
+    border-radius: 6px;
+    box-shadow: 2px 2px 1px 1px #333;
+    padding: 20px;
+  }
+  
+  .order-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .user-data {
+    font-size: 13px;
+    color: rgb(125, 125, 125);
+
+  }
+
+ .history-icon {
+    color: #ccc;
+    font-size: 39px !important;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 7.6px;
+ }
+
+
+ .history-icon:hover {
+    cursor: pointer;
+    opacity: 0.7;
+ }

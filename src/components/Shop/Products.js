@@ -4,16 +4,14 @@ import axios from 'axios';
 import {useState, useEffect} from 'react'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import useFetch from '../../helper/useFetch';
 
 
 const Products = (props) => {
   const [products, setProducts] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+
+  const {data: fetchedData, loading}= useFetch('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products.json')
   useEffect(()=> {
-    axios.get('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products.json')
-    .then(response => {
-      let fetchedData = response.data
-      console.log(fetchedData)
       const loadedProducts = []
       for (let key in fetchedData) {
         loadedProducts.push({
@@ -25,16 +23,13 @@ const Products = (props) => {
         })
       }
       setProducts(loadedProducts)
-      setIsLoading(false)
-      console.log(products)
-    })
-  }, [])
+  }, [fetchedData])
   return (
     <section className={classes.products}>
       <h2 style={{marginBottom: '100px'}}>Our Robot Products</h2>
 
-    {isLoading ?  
-    <Box sx={{ display: 'flex' }}>
+    {loading ?  
+    <Box sx={{ display: 'flex', textAlign:'center', justifyContent:'center', alignItems: 'center' }}>
       <CircularProgress />
     </Box> :  
     <ul>

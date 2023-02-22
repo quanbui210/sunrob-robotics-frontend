@@ -6,6 +6,7 @@ import Layout from './components/Layout/Layout';
 import ProductPage from './components/ProductPage';
 import { createRoot } from "react-dom/client";
 import { loader } from './components/ProductPage';
+import OrderHistory from './components/history/OrderHistory';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     path: '/products/:id',
     element: <Layout><ProductPage/></Layout>,
     loader: loader
+  },
+  {
+    path: '/order-history',
+    element: <Layout><OrderHistory/></Layout>,
   }
 ])
 

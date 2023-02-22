@@ -38,7 +38,7 @@ const ProductItem = (props) => {
           className='card-img'
         />
         <CardContent className="card-content">
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             {title}
           </Typography>
           <span className="card-price">${price && price.toFixed(2)} / kpl</span>
@@ -50,9 +50,6 @@ const ProductItem = (props) => {
         </Button>
         <Link to={`/products/${id}`}>
           <Button 
-            // onClick={()=> {
-            //   window.scrollTo(0, 0)
-            // }}
             className='card-btn-view' 
             size="small">
               View
