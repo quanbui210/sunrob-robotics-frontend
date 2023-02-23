@@ -19,10 +19,11 @@ const OrderHistory = () => {
           id: key,
           date: orderData[key].date,
           itemsInCart: orderData[key].orderedProducts,
-          userData: orderData[key].userData
+          userData: orderData[key].userData,
+          total: orderData[key].total
         })
       }
-      setOrders(loadedOrders);
+      setOrders(loadedOrders); 
     }
   }, [orderData]);
 
@@ -62,6 +63,10 @@ const OrderHistory = () => {
                         <li>Address: {order.userData.address}</li>
                       </ul>
                       <footer className="blockquote-footer">
+                        <h3 style={{
+                          marginTop: '35px',
+                          textAlign: 'center'
+                        }}>Total: ${order.total}</h3>
                       </footer>
                     </blockquote>
                   </Card.Body>
