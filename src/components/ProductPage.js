@@ -2,7 +2,6 @@ import { useParams, useNavigate, useLoaderData } from "react-router"
 import './ProductPage.css'
 import { useState, useEffect } from "react";
 import Grid from '@mui/material/Grid';
-import { Image } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
