@@ -18,6 +18,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import UserForm from './userForm';
+import { useMediaQuery } from '@mui/material';
 
 const Cart = (props) => {
   const cartQuantity = useSelector(state => state.cart.totalQuantity)
@@ -33,6 +34,9 @@ const Cart = (props) => {
     bottom: false,
     right: false,
   });
+
+  const matchesPhone = useMediaQuery('(max-width:600px)');
+
  
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -150,7 +154,7 @@ const Cart = (props) => {
       anchor='right'
       open={state['right']}
       onClose={toggleDrawer('right', false)}
-    > <p className="empty">Your Shopping Cart is Empty</p> </Drawer>}
+    > <p className="empty">{matchesPhone ? 'Your Cart is Empty' : 'Your Shopping Cart is Empty'}</p> </Drawer>}
     
     
   </React.Fragment>
