@@ -79,3 +79,28 @@
 .deleteAll:hover {
   color: #333 !important;
 }
+
+
+@media screen and (max-width: 600px) {
+  .head {
+    margin-right: 0px;
+  }
+  h3 {
+    font-size: 10px;
+  }
+  .image {
+    object-fit: contain;
+    width: 40px;
+    height: 40px;
+  }
+  .quantity span {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .price {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+}

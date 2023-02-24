@@ -71,3 +71,40 @@ h1 {
     color: rgb(192, 83, 83);
 }
 
+
+@media screen and (max-width: 600px) {
+    .page-img {
+        margin: 48px 80px;
+        width: 200px;
+        height: 300px;
+        display: block;
+    }
+    .page-container {
+        background-color: #fff !important;
+        height: 1300px;
+        font-size: smaller !important;
+        text-align: center;
+    }
+    .page > h1 {
+        font-size: 15px;
+    }
+    .info-container > h3 {
+        font-size: 13px;
+    }
+    .info-container > p {
+        font-size: 11px;
+    }
+    .page > p {
+        font-size: 11px;
+    }
+    .page > ul {
+        font-size: 11px;
+    }
+    .page-button {
+        margin-top: 20px !important;
+        float: right;
+        padding: -36px;
+        border-radius: 8px;
+        font-size: 12px !important;
+    }
+}

@@ -12,8 +12,9 @@ import './ProductItem.css'
 
 
 const ProductItem = (props) => {
-  const { title, price, description, id, image } = props;
+  const { title, price, description, id, image, availability } = props;
   const dispatch = useDispatch()
+  console.log(availability)
   const addToCartHandler = () => {
     dispatch(
       cartActions.add({
@@ -25,6 +26,7 @@ const ProductItem = (props) => {
     );
   };
 
+  let disabled = availability ? false : true
 
 
   return (
@@ -41,13 +43,38 @@ const ProductItem = (props) => {
           <Typography gutterBottom variant="h6" component="div">
             {title}
           </Typography>
+         {!availability ? <p 
+            style={{
+              fontSize: '10.6px',
+              color: 'rgb(192, 83, 90)'
+            }}
+          >Temporarily Out of Stock!!</p> : 
+            <p 
+            style={{
+              fontSize: '10.6px',
+              color: '#5d9c70'
+            }}>
+              In Stock
+            </p>}
           <span className="card-price">${price && price.toFixed(2)} / kpl</span>
           <p className="card-desc">
             {description}
           </p>
-        <Button  className='card-btn' size="small"  onClick={addToCartHandler}>
-          Add to cart
-        </Button>
+
+        {disabled?  
+          <Button
+            disabled={true}
+            className='card-btn disabled'
+             size="small"  onClick={addToCartHandler}>
+            Add to cart
+          </Button> : 
+          <Button
+            className='card-btn' 
+            size="small"  onClick={addToCartHandler}>
+            Add to cart
+          </Button>
+        }
+
         <Link to={`/products/${id}`}>
           <Button 
             className='card-btn-view' 

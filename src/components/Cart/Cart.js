@@ -40,6 +40,7 @@ const Cart = (props) => {
       return;
     }
     setState({ ...state, [anchor]: open });
+    setShowForm(false)
   };
   const cartItems = useSelector(state => state.cart.items)
   const checkoutHandler = (e) => {

@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import useFetch from '../../helper/useFetch';
+import Badge from '@mui/material/Badge';
 
 
 const Products = (props) => {
@@ -19,7 +20,8 @@ const Products = (props) => {
           title: fetchedData[key].title,
           description: fetchedData[key].description,
           image: fetchedData[key].image,
-          price: fetchedData[key].price
+          price: fetchedData[key].price,
+          available: fetchedData[key].available
         })
       }
       setProducts(loadedProducts)
@@ -34,14 +36,15 @@ const Products = (props) => {
     </Box> :  
     <ul>
         {products.map((product) => (
-          <ProductItem
-          key={product.id}
-          title={product.title}
-          price={product.price}
-          description={product.description}
-          id={product.id}
-          image={product.image}
-        />
+             <ProductItem
+              key={product.id}
+              title={product.title}
+              price={product.price}
+              description={product.description}
+              id={product.id}
+              image={product.image}
+              availability={product.available}
+            />
         ))}
       </ul>}
     </section>

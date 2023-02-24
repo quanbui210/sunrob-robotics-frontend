@@ -34,6 +34,11 @@
     min-width: 50px;
 }
 
+.disabled {
+    background-color: #908e8e !important;
+    pointer-events: none !important;
+}
+
 .card-btn:hover {
     background-color: rgb(212, 212, 212) !important;
     color: rgba(255, 123, 0, 0.884)  !important;
@@ -51,7 +56,7 @@
 
 .card-btn-view {
     border: 1px solid #ccc !important;
-    background-color: rgba(130, 129, 129, 0.884) !important;
+    background-color: #0b035a !important;
     margin-top: 20px !important;
     margin-bottom: 10px !important;
     padding: 8px !important;
@@ -66,3 +71,19 @@
 }
 
 
+@media screen and (max-width: 1000px) {
+    .card-container {
+        width: 280px;
+        height: 350px !important;
+        justify-content: space-between !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card-container {
+        width: 280px;
+        height: 350px !important;
+        justify-content: space-between !important;
+        margin: 30px !important;
+    }
+}
