@@ -20,15 +20,14 @@
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 930px) {
   .products ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    margin: 30px;
     grid-template-columns: auto auto;
-    
+    margin: 49px;
   }
 }
 

@@ -11,8 +11,10 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import axios from 'axios';
 
 export default  function ProductPage () { 
-    const matches = useMediaQuery('(min-width:600px)');
-    console.log(matches)
+    const matchesPhone = useMediaQuery('(min-width:600px)');
+
+    
+    console.log(matchesPhone)
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useDispatch()
@@ -38,8 +40,8 @@ export default  function ProductPage () {
     let stockColor = product.available ? 'stock' : 'out-stock'
     const disabled = product.available ? false : true
     return <div className="page-container">
-        {!matches ?
-           <Grid container spacing={matches ? 2 : 1}>
+        {!matchesPhone ?
+           <Grid container spacing={matchesPhone ? 2 : 1}>
            <Grid style={{display: 'block', width:'100%'}}>
                <Button className="go-back" onClick={()=> {
                    navigate('..')
@@ -94,7 +96,7 @@ export default  function ProductPage () {
            </Button>}
            </Grid>
        </Grid> :
-       <Grid container spacing={matches ? 2 : 1}>
+       <Grid container spacing={matchesPhone ? 2 : 1}>
        <Grid item xs={6}>
            <Button className="go-back" onClick={()=> {
                navigate('..')
