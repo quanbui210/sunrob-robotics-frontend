@@ -1,5 +1,5 @@
 
-import classes from './Cart.module.css';
+// import classes from './Cart.module.css';
 import CartItem from './CartItem';
 import { useSelector, useDispatch } from 'react-redux';
 import * as React from 'react';
@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import UserForm from './userForm';
 import { useMediaQuery } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Cart = (props) => {
   const cartQuantity = useSelector(state => state.cart.totalQuantity)
@@ -108,7 +109,6 @@ const Cart = (props) => {
   }, [cartItems])
 
 
-
   return (
     
     <React.Fragment key='right'>
@@ -146,15 +146,24 @@ const Cart = (props) => {
           />
           ))}
             <p className='total'>Total: ${total.toFixed(2)}</p>
-            <button onClick={checkoutHandler} className='checkout-btn'>Checkout 
+            <a onClick={checkoutHandler} className='checkout-btn'>Checkout 
               <ExitToAppIcon className='checkout-icon'/>
-            </button>
+            </a>
+            <a className='close-cart' onClick={()=>{
+              setState({...state, right: false})
+            }}><p>Close</p></a>
     </Drawer>} 
     {cartIsEmpty && !showForm && <Drawer
       anchor='right'
       open={state['right']}
       onClose={toggleDrawer('right', false)}
-    > <p className="empty">{matchesPhone ? 'Your Cart is Empty' : 'Your Shopping Cart is Empty'}</p> </Drawer>}
+    > <p className="empty">{matchesPhone ? 'Your Cart is Empty' : 'Your Shopping Cart is Empty'}</p>
+      <Button className='close-cart' onClick={()=>{
+              setState({...state, right: false})
+            }}>
+              <CloseIcon/>
+      </Button>
+     </Drawer>}
     
     
   </React.Fragment>

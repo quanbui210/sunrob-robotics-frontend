@@ -19,8 +19,8 @@
 .checkout-btn {
     border: 1px solid #ccc;
     padding: 18px;
-    background-color: rgba(255, 123, 0, 0.884)
-
+    background-color: rgba(255, 123, 0, 0.884);
+    text-align: center;
 }
 
 .checkout-icon {
@@ -39,4 +39,14 @@
 
 .cart-ul {
     overflow: scroll !important;
+}
+
+.close-cart {
+    margin-top: 20px !important;
+    background-color: #ec5353 !important;
+    color: #eeeeee !important;
+    border: 1px solid #ccc !important;
+    /* background-color: #fff */
+    font-style: normal !important;
+    text-align: center;
 }

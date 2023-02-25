@@ -12,9 +12,6 @@ import axios from 'axios';
 
 export default  function ProductPage () { 
     const matchesPhone = useMediaQuery('(min-width:600px)');
-
-    
-    console.log(matchesPhone)
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useDispatch()
