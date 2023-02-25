@@ -22,6 +22,7 @@
 .page-button:hover {
     background-color: #d5d5d5 !important;
     color: #f49c19 !important;
+    cursor: pointer;
 }
 
 h1 {

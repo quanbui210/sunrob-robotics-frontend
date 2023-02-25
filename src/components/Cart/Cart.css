@@ -23,6 +23,12 @@
     text-align: center;
 }
 
+
+.checkout-btn:hover {
+    cursor: pointer;
+    background-color: #c6c0c0;
+}
+
 .checkout-icon {
     font-size: 13px !important;
     margin-left: 3px;
@@ -49,4 +55,9 @@
     /* background-color: #fff */
     font-style: normal !important;
     text-align: center;
+}
+
+.close-cart:hover {
+    cursor: pointer;
+    background-color: #c6c0c0 !important;
 }

@@ -67,6 +67,7 @@
 .actions button:active {
   background-color: #4b4b4b;
   color: white;
+  cursor: pointer;
 }
 
 
@@ -78,6 +79,7 @@
 
 .deleteAll:hover {
   color: #333 !important;
+  cursor: pointer;
 }
 
 
