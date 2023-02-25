@@ -48,7 +48,7 @@ const OrderHistory = () => {
                         {order.itemsInCart.map(item => (
                           <li key={item.id}>
                             <img style={{ width: '100px' }} src={item.image} alt={item.name} />
-                            {item.name} x{item.quantity}
+                            {item.name.split(" ")[0]} x{item.quantity}
                           </li>
                         ))}
                       </ul>
