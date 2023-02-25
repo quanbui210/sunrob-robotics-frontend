@@ -23,7 +23,7 @@ const OrderHistory = () => {
           total: orderData[key].total
         })
       }
-      setOrders(loadedOrders); 
+      setOrders(loadedOrders.reverse()); 
     }
   }, [orderData]);
 
@@ -38,7 +38,7 @@ const OrderHistory = () => {
       ) : (
         <div className="order-container">
           <ul style={{ listStyleType: 'none' }}>
-            {orders.reverse().map(order => (
+            {orders.map(order => (
               <li key={order.id}>
                 <Card className="history-card">
                   <Card.Header style={{ color: "#f49c19" }}>Id: {order.id}</Card.Header>
