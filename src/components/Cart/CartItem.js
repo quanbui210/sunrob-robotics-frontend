@@ -6,7 +6,6 @@ import Tooltip from '@mui/material/Tooltip';
 // import '@fontsource/roboto/400.css';
 const CartItem = (props) => {
   const { title, quantity, total, price, id, image } = props.item;
-  console.log(total)
   const dispatch = useDispatch()
 
   const addItemHandler = () => {

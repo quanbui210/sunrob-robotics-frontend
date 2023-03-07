@@ -69,7 +69,8 @@
 
 .card-btn-view:hover {
     background-color: #ccc !important;
-    cursor: pointer;
+    cursor: pointer !important;
+    color: #0b035a !important; 
 }
 
 

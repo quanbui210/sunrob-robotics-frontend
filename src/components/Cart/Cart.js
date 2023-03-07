@@ -3,7 +3,6 @@
 import CartItem from './CartItem';
 import { useSelector, useDispatch } from 'react-redux';
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import styles from './CartButton.module.css';
@@ -55,9 +54,10 @@ const Cart = (props) => {
   const submitOrderHandler = (userData) => {
     const date = new Date()
     const day = date.getDate()
-    const month = date.getMonth()
+    const month = date.getMonth() + 1
     const year = date.getFullYear()
     let orderDate = `${day} - ${month} - ${year}`
+  
     // dispatch(toggleActions.show())
     dispatch(cartActions.removeAllItems())
     axios.post('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/orders.json', {
@@ -146,12 +146,12 @@ const Cart = (props) => {
           />
           ))}
             <p className='total'>Total: ${total.toFixed(2)}</p>
-            <a onClick={checkoutHandler} className='checkout-btn'>Checkout 
+            <Button onClick={checkoutHandler} className='checkout-btn'> 
               <ExitToAppIcon className='checkout-icon'/>
-            </a>
-            <a className='close-cart' onClick={()=>{
+            </Button>
+            <Button className='close-cart' onClick={()=>{
               setState({...state, right: false})
-            }}><p>Close</p></a>
+            }}><CloseIcon/></Button>
     </Drawer>} 
     {cartIsEmpty && !showForm && <Drawer
       anchor='right'

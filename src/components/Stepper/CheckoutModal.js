@@ -23,7 +23,6 @@ export default function CheckoutModal() {
 //   const handleClose = () => setOpen(false);
   const dispatch = useDispatch()
   const open = useSelector(state => state.toggle.show)
-  console.log(open)
   const handleClose = () => {
     dispatch(toggleActions.hide())
   }

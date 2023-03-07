@@ -1,4 +1,4 @@
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Button } from '@mui/material';
 import classes from './ProductItem.module.css';
 import { useDispatch } from 'react-redux';
 import {cartActions} from '../../store/cart-slice'
@@ -14,7 +14,6 @@ import './ProductItem.css'
 const ProductItem = (props) => {
   const { title, price, description, id, image, availability } = props;
   const dispatch = useDispatch()
-  console.log(availability)
   const addToCartHandler = () => {
     dispatch(
       cartActions.add({
