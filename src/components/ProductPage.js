@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
 import { useParams, useNavigate, useLoaderData } from "react-router"
 import './ProductPage.css'
 import { useState, useEffect } from "react";
@@ -15,13 +17,13 @@ export default  function ProductPage () {
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useDispatch()
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState({})
     const response = useLoaderData()
     let fetchedData = response.data
     useEffect(()=> {
       window.scrollTo(0,0)
       setProduct(fetchedData)
-     }, [])
+     }, [fetchedData])
 
     const addToCartHandler = () => {
         dispatch(
@@ -44,7 +46,7 @@ export default  function ProductPage () {
                    navigate('..')
                }}><KeyboardReturnIcon/>Back</Button>
                <div>
-                   <img src={product.image} className='page-img'/>
+                   <img src={product.image} className='page-img' alt="robot"/>
                </div>
            </Grid>
            <Grid style={{display: 'block'}}className='page'>

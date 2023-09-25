@@ -10,7 +10,6 @@ import Badge from '@mui/material/Badge';
 
 const Products = (props) => {
   const [products, setProducts] = useState([])
-
   const {data: fetchedData, loading}= useFetch('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products.json')
   useEffect(()=> {
       const loadedProducts = []

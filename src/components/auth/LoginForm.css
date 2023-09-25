@@ -1,0 +1,98 @@
+.form{
+    border: 1px solid #746e6e;
+    border-radius: 10px;
+    color: #333 !important;
+    width: 60%;
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #efeeee;
+}
+
+.form-label {
+    float: left;
+    font-size: 16px;
+    min-width: 130px
+}
+
+.form-button {
+    border: 1px solid #ccc;
+    padding: 8px 12px !important;
+    border-radius: 4px;
+    width: 100%;
+    font-weight: bold;
+    color: #333;
+    background-color: rgba(255, 123, 0, 0.884);
+    margin-bottom: 13px;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-button:hover {
+        background-color: #fff;
+        color: #000;
+}
+.form-control {
+    margin-bottom: 15px;
+    padding: 6px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #333;
+    min-width: 180px
+}
+.instruction {
+    margin-top: 30px;
+    p {
+        font-size: 11.5px;
+        text-align: left !important;
+        margin: 0;
+    }
+
+}
+
+.load-msg {
+    font-size: 13px;
+    color: red;
+}
+.signup {
+   font-size: 12px;
+   a {
+    text-decoration: underline;
+    cursor: pointer !important;
+    :hover {
+        color: #565454 !important;
+        opacity: 0.8;
+    }
+   }
+}
+
+.error-message-login {
+    color: red;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 500px) {
+    .form {
+        margin: 0
+    }
+    h5 {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .form {
+        margin: 0;
+            &-label {
+                font-size: 10px;
+            }
+            &-text {
+                font-size: 10px;
+            }
+    }
+    h5 {
+        font-size: 20px;
+    }
+}

@@ -5,6 +5,8 @@ const toggleSlice = createSlice({
     name: 'toggleSlice',
     initialState: {
         show: false,
+        isSignup: true,
+        isLogin: false
     },
     reducers: {
         show: (state)=> {
@@ -12,6 +14,14 @@ const toggleSlice = createSlice({
         },
         hide: (state)=> {
             state.show = false;
+        },
+        isSignupAction: (state) => {
+            state.isSignup = true
+            state.isLogin = false
+        },
+        isLogin: (state) => {
+            state.isSignup = false
+            state.isLogin = true
         }
     }
 })

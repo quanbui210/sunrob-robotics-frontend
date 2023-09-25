@@ -1,12 +1,11 @@
-import Cart from './components/Cart/Cart';
 import Products from './components/Shop/Products';
-import { useSelector } from 'react-redux';
 import CheckoutModal from './components/Stepper/CheckoutModal';
 import Layout from './components/Layout/Layout';
 import ProductPage from './components/ProductPage';
-import { createRoot } from "react-dom/client";
 import { loader } from './components/ProductPage';
 import OrderHistory from './components/history/OrderHistory';
+import LoginPage from './components/auth/LoginPage'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -28,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: '/order-history',
     element: <Layout><OrderHistory/></Layout>,
+  },
+  {
+    path: '/login-form',
+    element: <Layout><LoginPage/></Layout>,
   }
 ])
 
