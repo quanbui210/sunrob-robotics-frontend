@@ -29,15 +29,11 @@ const OrderHistory = () => {
 
   return (
     <>
-      <Button className="go-back" onClick={() => {
-        navigate('..')
-      }}><KeyboardReturnIcon />Back</Button>
-      <h1 style={{textAlign:'center', color: '#333'}}>Order History</h1>
       {isLoading ? (
         <p>Loading orders...</p>
       ) : (
         <div className="order-container">
-          <ul style={{ listStyleType: 'none' }}>
+          <ul className="order-list" style={{ listStyleType: 'none' }}>
             {orders.map(order => (
               <li key={order.id}>
                 <Card className="history-card">

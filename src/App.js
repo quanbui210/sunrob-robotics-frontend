@@ -3,8 +3,7 @@ import CheckoutModal from './components/Stepper/CheckoutModal';
 import Layout from './components/Layout/Layout';
 import ProductPage from './components/ProductPage';
 import { loader } from './components/ProductPage';
-import OrderHistory from './components/history/OrderHistory';
-import LoginPage from './components/auth/LoginPage'
+import LoginPage from './components/Auth/LoginPage'
 
 import {
   createBrowserRouter,
@@ -12,6 +11,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import Profile from './components/Profile/Profile';
 
 
 const router = createBrowserRouter([
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
     loader: loader
   },
   {
-    path: '/order-history',
-    element: <Layout><OrderHistory/></Layout>,
+    path: '/profile',
+    element: <Layout><Profile/></Layout>,
   },
   {
     path: '/login-form',

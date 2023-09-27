@@ -26,9 +26,6 @@ const cartSlice = createSlice({
                 existingItem.quantity++
                 existingItem.totalPrice = existingItem.totalPrice + newItem.price
             }
-            //define new item = what will be passed
-            //check if the item already exists, if yes, only increase the quantity and total price
-            //if not, add the item
         },
         remove(state, action) {
           const id = action.payload

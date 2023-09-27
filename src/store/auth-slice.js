@@ -82,6 +82,7 @@ const authSlice = createSlice({
         builder.addCase(logoutThunk.fulfilled, (state) => {
             state.isLoggedOut = true
             state.isLoggedIn = false
+            state.signUpSuccess = false
         })
     }
 })

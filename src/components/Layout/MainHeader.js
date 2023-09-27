@@ -1,7 +1,6 @@
 import Cart from '../Cart/Cart';
 import classes from './MainHeader.module.css';
 import logo from '../../assets/logo.png';
-import { toggleActions } from '../../store/toggle-slice';
 
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -11,11 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import HistoryIcon from '@mui/icons-material/History';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Tooltip } from '@mui/material';
-import Badge from '@mui/material/Badge';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -24,6 +20,8 @@ import { useTheme } from '@mui/material/styles';
 
 import {useState, useEffect} from 'react';
 import { authActions } from '../../store/auth-slice';
+import { toggleActions } from '../../store/toggle-slice';
+
 
 
 const MainHeader = (props) => {
@@ -32,7 +30,6 @@ const MainHeader = (props) => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   const [openDialog, setOpenDialog] = useState(false)
   const {isLoggedIn, isLoggedOut} = useSelector(state => state.auth)
-  console.log(isLoggedIn, isLoggedOut);
   const dispatch = useDispatch()
   const handleOpen = () => {
     setOpenDialog(true)
@@ -45,6 +42,7 @@ const MainHeader = (props) => {
   const logOut = async () => {
     try {
       await dispatch(authActions.logoutThunk())
+      await dispatch(toggleActions.isSignupAction())
     } catch(e) {
       console.log(e);
     }
@@ -57,7 +55,7 @@ const MainHeader = (props) => {
       <nav>
         <ul>
           <li>
-            <Link to='/order-history'>
+            <Link to='/profile'>
               <Tooltip title="View Order History">
                   <HistoryIcon className='history-icon'/>
               </Tooltip>
