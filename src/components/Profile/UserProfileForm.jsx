@@ -2,9 +2,13 @@ import { Form } from "react-bootstrap"
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 
+import { useSelector } from "react-redux";
+
 import './UserProfileForm.css'
 
 export default function UserProfileForm() {
+    const{ userLoggedIn } = useSelector(state => state.auth)
+    console.log(userLoggedIn);
     return (
         <div className="form-profile-container">
             <div className="avatar">
@@ -15,7 +19,7 @@ export default function UserProfileForm() {
                         sx={{ width: 130, height: 130 }}
                     /> 
                 </div>        
-                <p className="profile-name">Quan Bui</p>
+                <p className="profile-name">{userLoggedIn.name}</p>
                 </div>
                 <Form className="profile-form">
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
@@ -25,7 +29,7 @@ export default function UserProfileForm() {
                             autoComplete="off"
                             className="form-control-profile"
                             name="form-name"
-                            value="Quan Bui"
+                            value={userLoggedIn.name}
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
@@ -35,7 +39,7 @@ export default function UserProfileForm() {
                             autoComplete="off"
                             className="form-control-profile"
                             name="form-useremail"
-                            value="quanbui@gmail.com"
+                            value={userLoggedIn.email}
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
@@ -45,8 +49,8 @@ export default function UserProfileForm() {
                             autoComplete="off"
                             className="form-control-profile disabled"
                             name="form-userrole"
-                            value="User"
-                            disabled="true"
+                            value={userLoggedIn.role}
+                            disabled={true}
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
@@ -56,8 +60,8 @@ export default function UserProfileForm() {
                             autoComplete="off"
                             className="form-control-profile disabled"
                             name="form-id"
-                            value="q823818djadfcdasdud"
-                            disabled="true"
+                            value={userLoggedIn.userId}
+                            disabled={true}
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile btn">

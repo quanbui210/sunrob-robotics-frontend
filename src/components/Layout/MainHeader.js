@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import HistoryIcon from '@mui/icons-material/History';
@@ -29,7 +30,8 @@ const MainHeader = (props) => {
   const navigate = useNavigate()
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   const [openDialog, setOpenDialog] = useState(false)
-  const {isLoggedIn, isLoggedOut} = useSelector(state => state.auth)
+  const {isLoggedIn, isLoggedOut, userLoggedIn, isAdmin} = useSelector(state => state.auth)
+  console.log(isLoggedIn);
   const dispatch = useDispatch()
   const handleOpen = () => {
     setOpenDialog(true)
@@ -50,22 +52,16 @@ const MainHeader = (props) => {
 
   return (
     <header className={classes.header}>
-     <Link to="/">
+     <Link to='/'>
       <img className={classes.logo} alt="sunrob.com" src={logo}></img></Link> 
       <nav>
         <ul>
           <li>
-            <Link to='/profile'>
-              <Tooltip title="View Order History">
-                  <HistoryIcon className='history-icon'/>
-              </Tooltip>
-            </Link>
             <Cart/>
 
             <Link onClick={handleOpen}>
-              <Tooltip title="Account Details">
                   <AccountCircleIcon className='history-icon'/>
-              </Tooltip>
+                  <span className={classes.avatarName}>{userLoggedIn.name}</span>
             </Link>
           </li>
         </ul>
@@ -76,7 +72,7 @@ const MainHeader = (props) => {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {isLoggedIn ? "Hello user" : "Please log in or signup to continue"}
+          {isLoggedIn ? "Welcome to Sunrob" : "Please log in or signup to continue"}
         </DialogTitle>
         {isLoggedIn === false ?
         <DialogContent>
@@ -95,10 +91,22 @@ const MainHeader = (props) => {
               Signup
           </button>
         </DialogContent> : <DialogContent>
-          <button className={classes.button}>
+         {isAdmin ? 
+         <button onClick={() => {
+          navigate('/')
+          handleClose()
+         }} className={classes.button}>Sunrob Main Page</button> :
+         <button onClick={() => {
+          navigate('/profile')
+          handleClose()
+          }} className={classes.button}>
             Profile Details
-          </button>
-          <button className={classes.button}>Settings</button>
+          </button>}
+         {isAdmin ? <button onClick={() => {
+          navigate('/dashboard')
+          handleClose()
+         }}
+          className={classes.button}>Admin Dashboard</button> : <button className={classes.button}>Settings</button>}
           <button onClick={() => {
             navigate('/login-form')
             dispatch(toggleActions.isSignupAction())

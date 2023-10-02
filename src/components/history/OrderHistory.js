@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import './OrderHistory.css';
 import { useNavigate } from "react-router";
-import { Button } from "@mui/material";
-import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
-
+import Grid from '@mui/material/Grid';
 const OrderHistory = () => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
@@ -32,15 +30,16 @@ const OrderHistory = () => {
       {isLoading ? (
         <p>Loading orders...</p>
       ) : (
-        <div className="order-container">
-          <ul className="order-list" style={{ listStyleType: 'none' }}>
+        <Card className="order-card-container">
+          <div className="history-card">
+          <ul style={{ listStyleType: 'none' }}>
+            {orders.length === 0 && <h3 style={{textAlign: 'center'}}>No orders yet, please make an order</h3>}
             {orders.map(order => (
-              <li key={order.id}>
-                <Card className="history-card">
-                  <Card.Header style={{ color: "#f49c19" }}>Id: {order.id}</Card.Header>
-                  <Card.Body>
-                    <blockquote className="blockquote mb-0">
-                      <ul style={{ listStyleType: 'none' }}>
+              <li  key={order.id}>
+                <Grid container spacing={2} className="order-grid">
+                  <Grid item xs={8}>
+                    <div style={{ color: "#f49c19" }}>Id: {order.id}</div>
+                      <ul style={{ listStyleType: 'none', marginBottom: "20px" }}>
                         {order.itemsInCart.map(item => (
                           <li key={item.id}>
                             <img style={{ width: '100px' }} src={item.image} alt={item.name} />
@@ -48,7 +47,9 @@ const OrderHistory = () => {
                           </li>
                         ))}
                       </ul>
-                      <p style={{ color: '#5d9c70' }}>Order Placed on: {order.date}</p>
+                  </Grid>
+                  <Grid item xs={4}>
+                  <p style={{ color: '#5d9c70' }}>Order Placed on: {order.date}</p>
                       <p style={{ color: 'rgb(122, 133, 200)' }}>Ordered By:
                       </p>
                       <ul className="user-data">
@@ -58,19 +59,22 @@ const OrderHistory = () => {
                         <li>Email: {order.userData.email.replace(/(\w{1})[\w.-]+@([\w.]+\w)/, "$1******@$2")}</li>
                         <li>Address: {order.userData.address}</li>
                       </ul>
+
                       <footer className="blockquote-footer">
                         <h3 style={{
                           marginTop: '35px',
-                          textAlign: 'center'
+                          color:'red'
                         }}>Total: ${order.total}</h3>
+                        <button className="order-btn">View Order</button>
                       </footer>
-                    </blockquote>
-                  </Card.Body>
-                </Card>
+                  </Grid>
+                </Grid>
               </li>
             ))}
           </ul>
-        </div>
+          </div>
+
+        </Card>
       )}
     </>
   )

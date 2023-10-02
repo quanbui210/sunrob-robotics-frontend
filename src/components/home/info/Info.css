@@ -1,0 +1,32 @@
+.info-page-container{ 
+    margin-bottom: 200px;
+    background-color: #d37420;
+}
+
+.infor-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 60px;
+}
+
+.info-page-content {
+    margin-bottom:180px;
+}
+
+.info-page-content-title {
+    width: 340px;
+    float:left !important;
+    font-size: 30px;
+}
+
+.info-page-content-text {
+    float: right !important;
+    width: 400px;
+    margin-right: 180px;
+}
+
+.info-page-card {
+    margin-top: 100px;
+}

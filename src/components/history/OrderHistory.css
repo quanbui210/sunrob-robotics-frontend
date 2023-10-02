@@ -9,21 +9,18 @@
     display: grid;
     margin:  30px;
     min-height: 425px;
-    max-height: 425px;
+    max-height: 825px;
     overflow: scroll;
     margin-left: 10px;
   }
   
-  .order-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .order-grid {
+    min-height: 300px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 30px;
+    margin-top: 30px;
   }
 
-  .order-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
   .user-data {
     font-size: 13px;
@@ -59,4 +56,12 @@
     box-shadow: 0 0 2px 2px #8f8f8f;
     padding: 20px;
   }
+ }
+
+ .order-btn {
+  background-color: #5180ee;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
  }

@@ -31,3 +31,16 @@ Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 ![Screenshot 2023-02-23 at 0 08 57](https://user-images.githubusercontent.com/89993167/220771104-4cd5697a-390c-43c3-a84e-260d00cae2a2.png)
 
 3. View Order History
+
+
+
+
+
+
+
+
+Missing:
+- Dashboard
+- View order page -> leave a review
+- Landing Page -> Intro, featured products, types
+- Refactor Product Page

@@ -9,18 +9,22 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import axios from 'axios'
 
 const LoginForm = () => {
     const [enteredUserName, setEnteredUserName] = useState('')
     const [enteredPassword, setEnteredPassword] = useState('')
     const [enteredEmail, setEnteredEmail] = useState('')
     const [loadMsg, setLoadMsg] = useState(false)
-    const {signUpSuccess} = useSelector(state => state.auth)
+    const {signUpSuccess, isAdmin, userLoggedIn} = useSelector(state => state.auth)
     const {isSignup, isLogin} = useSelector(state => state.toggle)
+
+
+
+    console.log(signUpSuccess);
+
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
     const userNameHandler = (e) => {
         setEnteredUserName(e.target.value)
     }
@@ -30,7 +34,6 @@ const LoginForm = () => {
     const emailHandler = (e) => {
         setEnteredEmail(e.target.value)
     }
-
     const signup = async (e) => {
         e.preventDefault()
         const newUser = {
@@ -51,11 +54,12 @@ const LoginForm = () => {
             email: enteredEmail,
             password: enteredPassword
         }
-        try {
-            await dispatch(authActions.loginThunk(loginUser))
-            navigate('/')
-        } catch (e) {
-            console.log(e);
+        await dispatch(authActions.loginThunk(loginUser))
+        if (userLoggedIn.role === 'Admin') {
+          // navigate('/dashboard')
+          navigate('/')
+        } else {
+         navigate('/')
         }
     }
 

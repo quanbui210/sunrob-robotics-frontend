@@ -1,0 +1,42 @@
+.featured-container {
+    margin-top: 600px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #04083f;
+    width: 100%;
+}
+
+.featured-img {
+    height: 320px;
+    width: 480px;
+}
+
+.featured-title {
+    color: #a9a9a9;
+    font-size: 40px;
+    border-bottom: 3px solid rgba(255, 123, 0, 0.884);
+    padding: 40px 0;
+}
+.name-span {
+    float: left;
+    font-size: 20px;
+    color: aliceblue;
+}
+.price-span {
+    float: right;
+    font-size: 20px;
+}
+.featured-card {
+    margin-top: 60px;
+    border-radius: 3px;
+    margin-right: 60px;
+    margin-bottom: 30px !important;
+}
+
+.viewAll-btn {
+    margin-bottom: 30px;
+    padding: 18px 25px;
+    background-color: rgba(255, 123, 0, 0.884);
+}
+

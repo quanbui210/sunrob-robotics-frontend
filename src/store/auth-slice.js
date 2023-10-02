@@ -8,7 +8,12 @@ const initialState = {
     isFailed: false,
     signUpSuccess: false,
     loginSuccess: false,
-    isLoggedOut: true
+    isLoggedOut: true,
+    userLoggedIn: {
+        name: '',
+        userId: '',
+        role: '',
+    }
 }
 
 const baseURL = '/api/v1'
@@ -67,10 +72,15 @@ const authSlice = createSlice({
             state.loginSuccess = true
             state.isLoggedOut = false
             const {user} = action.payload
-            console.log(user)
-            if (user.role === 'Admin') {
+            state.userLoggedIn = user
+            console.log(state.userLoggedIn.role, state.userLoggedIn.role === 'Admin');
+            if (state.userLoggedIn.role === 'Admin') {
                 state.isAdmin = true
+                console.log('ADMINNNN');
+            } else {
+                state.isAdmin = false
             }
+            console.log(state.isAdmin);
             })
         builder.addCase(loginThunk.rejected, (state) => {
             state.isFailed = true
@@ -83,6 +93,8 @@ const authSlice = createSlice({
             state.isLoggedOut = true
             state.isLoggedIn = false
             state.signUpSuccess = false
+            state.isAdmin = false
+            state.loginSuccess = false
         })
     }
 })
