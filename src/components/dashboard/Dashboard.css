@@ -1,0 +1,14 @@
+.admin-table {
+    text-align: center;
+    margin-top: 70px; 
+}
+
+.product-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.data-card {
+    background-color: rgb(255, 255, 255) !important;
+    color: #1f1f1f !important
+}

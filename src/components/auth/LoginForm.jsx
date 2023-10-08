@@ -68,34 +68,34 @@ const LoginForm = () => {
   return (
     <>
     {signUpSuccess && 'Sign up successfully, now you can login'}
-      <Form className="form" autoComplete="off">
-          <Form.Group className="form-group" controlId="formBasicEmail">
-            <Form.Label className="form-label">Email</Form.Label>
+      <Form className="form-auth" autoComplete="off">
+          <Form.Group className="form-group-auth" controlId="formBasicEmail">
+            <Form.Label className="form-label-auth">Email</Form.Label>
             <Form.Control
               placeholder="email"
               autoComplete="off"
-              className="form-control"
+              className="form-control-auth"
               name="form-useremail"
               value={enteredEmail}
               onChange={emailHandler}
             />
           </Form.Group>
-     { (signUpSuccess === false && isLogin === false) &&  <Form.Group className="form-group" controlId="formBasicEmail">
-          <Form.Label className="form-label">Username: </Form.Label>
+     { (signUpSuccess === false && isLogin === false) &&  <Form.Group className="form-group-auth" controlId="formBasicEmail">
+          <Form.Label className="form-label-auth">Username: </Form.Label>
           <Form.Control
             autoComplete="off"
-            className="form-control"
+            className="form-control-auth"
             placeholder="username"
             value={enteredUserName}
             name="form-username"
             onChange={userNameHandler}
           />
         </Form.Group> }
-        <Form.Group className="form-group" controlId="formBasicEmail">
-          <Form.Label className="form-label">Password: </Form.Label>
+        <Form.Group className="form-group-auth" controlId="formBasicEmail">
+          <Form.Label className="form-label-auth">Password: </Form.Label>
           <Form.Control
             autoComplete="off"
-            className="form-control"
+            className="form-control-auth"
             type="password"
             placeholder="password"
             value={enteredPassword}
@@ -105,12 +105,12 @@ const LoginForm = () => {
         </Form.Group>
         <Form.Group className="form-group">
         {(signUpSuccess === false && isLogin === false) ? (
-            <button type="button" className='form-button' onClick={signup}>
+            <button type="button" className='form-button-auth' onClick={signup}>
               Sign Up
             </button>
           ) : (
             <div>
-              <button type="button" className='form-button' onClick={login}>
+              <button type="button" className='form-button-auth' onClick={login}>
                 Login
               </button>
             </div>
@@ -123,6 +123,7 @@ const LoginForm = () => {
           <span className="signup">
             Already have an account?{' '}
             <a
+             className='signup-span'
               onClick={() => {
                 dispatch(toggleActions.isLogin())
               }}>
@@ -134,6 +135,7 @@ const LoginForm = () => {
           <span className="signup">
             Dont have an account yet?{' '}
             <a
+             className='signup-span'
               onClick={() => {
                 dispatch(toggleActions.isSignupAction())
               }}>

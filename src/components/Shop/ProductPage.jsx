@@ -7,23 +7,23 @@ import Grid from '@mui/material/Grid';
 import { Button } from "@mui/material";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { useDispatch } from "react-redux";
-import { cartActions } from "../store/cart-slice";
+import { useDispatch, useSelector } from "react-redux";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import axios from 'axios';
+import { productActions } from "../../store/product-slice";
+import { cartActions } from "../../store/cart-slice";
+
 
 export default  function ProductPage () { 
     const matchesPhone = useMediaQuery('(min-width:600px)');
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useDispatch()
-    const [product, setProduct] = useState({})
-    const response = useLoaderData()
-    let fetchedData = response.data
+    const product = useSelector(state => state.product.product)
+    
     useEffect(()=> {
       window.scrollTo(0,0)
-      setProduct(fetchedData)
-     }, [fetchedData])
+      dispatch(productActions.getOneProdut(id))
+     }, [dispatch, id])
 
     const addToCartHandler = () => {
         dispatch(
@@ -36,8 +36,8 @@ export default  function ProductPage () {
         );
       };
 
-    let stockColor = product.available ? 'stock' : 'out-stock'
-    const disabled = product.available ? false : true
+    let stockColor = 'stock' 
+    const disabled =  false 
     return <div className="page-container">
         {!matchesPhone ?
            <Grid container spacing={matchesPhone ? 2 : 1}>
@@ -46,7 +46,7 @@ export default  function ProductPage () {
                    navigate('..')
                }}><KeyboardReturnIcon/>Back</Button>
                <div>
-                   <img src={product.image} className='page-img' alt="robot"/>
+                   <img src={product.image} className='page-img' alt="robot"/>       /
                </div>
            </Grid>
            <Grid style={{display: 'block'}}className='page'>
@@ -105,7 +105,7 @@ export default  function ProductPage () {
            </div>
        </Grid>
        <Grid item xs={5} className='page'>
-           <h1>{product.title}</h1>
+           <h1>{product.name}</h1>
            <div className="info-container">
                <h3><b>PRICE: ${product.price && product.price.toFixed(2)} <a className="sale">(-15%)</a></b></h3>
                <p><a>FREE delivery</a> <b>Wednesday, March 1</b> on eligible first order. Order within <a>15 hrs 28 mins</a></p>
@@ -115,7 +115,7 @@ export default  function ProductPage () {
                </p>
                <h3 className={stockColor}>{product.available ? 'In Stock: >10pcs' : 'Out Of Stock'}</h3>
            </div>
-           <p>Suitable for children ages 3 and up, these toys make a great gift for any child interested in robotics and STEM education.</p>
+           <p>{product.description}</p>
            <h1>About this item:</h1>
            <ul>
                <li>
@@ -155,8 +155,3 @@ export default  function ProductPage () {
     </div>
 }
 
-
-export function loader({params}) {
-    let response = axios.get(`https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products/${params.id}.json`)
-    return response
-}

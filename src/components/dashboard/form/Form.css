@@ -1,0 +1,73 @@
+.form-container-dashboard{
+    margin: 80px 150px;
+    background-color: #ccc;
+    padding: 70px;
+    border: 2px solid #746e6e;
+    border-radius: 10px;
+    color: #000000 !important;
+    text-align: center;
+}
+
+.form-group-dashboard {
+    margin: 20px 0;
+}
+.desc-input {
+    width: calc(100% - 401px) !important; /* Adjust the value (30px) according to your padding */
+    padding: 30px 0;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+}
+
+.add-label{
+    float: left;
+    font-size: 16px;
+    min-width: 130px
+}
+
+.file-input {
+    width: calc(100% - 401px) !important;
+    
+}
+
+.add-input {
+    text-align: center;
+    padding: 15px;
+    width: calc(100% - 401px) !important;
+}
+
+.select-input {
+    padding: 8px 10px;
+}
+
+.select-form {
+    text-align:unset !important;
+    margin: 30px 0;
+}
+
+.submit-btn {
+    margin-top: 40px;
+    padding: 10px 50px;
+    background-color: rgb(52, 52, 52);
+    color: #ccc
+}
+
+.url {
+    margin-top: 10px;
+}
+#product-file {
+    text-align: center;
+}
+
+.select-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.confirm-img-btn {
+    margin-left: 10px;
+    border: none;
+    padding: 5px;
+    background-color: #333;
+    color: #ccc;
+}

@@ -2,13 +2,19 @@ import { Grid } from "@mui/material"
 import { useNavigate } from "react-router"
 
 import Featured from "./featured/Featured"
-import Info from "./info/Info"
+import {  useDispatch } from "react-redux"
+import { useEffect } from "react"
 
 import robImg from '../../assets/robottoys.png'
 import './HomePage.css'
+import { productActions } from "../../store/product-slice"
 
 export default function HomePage () {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+    useEffect(()=> {
+        dispatch(productActions.getAllProducts())
+    }, [dispatch])
     return (
         <div>
         <div>

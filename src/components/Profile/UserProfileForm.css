@@ -1,7 +1,16 @@
 .form-profile-container{
-    margin: 100px !important;
+    border: 2px solid #746e6e;
+    border-radius: 10px;
+    color: #000000 !important;
+    width: 60%;
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #d4d4d4;
+    margin-top: 100px;
+    margin-bottom: 80px;
 }
-
 .profile-form {
   margin-top: 80px;
 }
@@ -28,6 +37,13 @@
 
 .form-control-profile {
     padding: 10px;
+}
+
+.form-label-profile {
+    float: left;
+    font-size: 16px;
+    min-width: 130px
+
 }
 
 .form-group-profile {

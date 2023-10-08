@@ -1,4 +1,4 @@
-.form{
+.form-auth{
     border: 1px solid #746e6e;
     border-radius: 10px;
     color: #333 !important;
@@ -10,13 +10,13 @@
     background-color: #efeeee;
 }
 
-.form-label {
+.form-label-auth {
     float: left;
     font-size: 16px;
     min-width: 130px
 }
 
-.form-button {
+.form-button-auth {
     border: 1px solid #ccc;
     padding: 8px 12px !important;
     border-radius: 4px;
@@ -28,13 +28,13 @@
     transition: all 0.3s ease-in-out;
 }
 
-.form-button:hover {
+.form-button-auth:hover {
         background-color: #fff;
         color: #000;
 }
-.form-control {
+.form-control-auth {
     margin-bottom: 15px;
-    padding: 6px;
+    padding: 9x;
     border-radius: 5px;
     border: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -58,14 +58,15 @@
 }
 .signup {
    font-size: 12px;
-   a {
+}
+
+.signup-span{
     text-decoration: underline;
     cursor: pointer !important;
-    :hover {
-        color: #565454 !important;
-        opacity: 0.8;
-    }
-   }
+}
+.signup-span:hover {
+    color: #565454 !important;
+    opacity: 0.8;
 }
 
 .error-message-login {

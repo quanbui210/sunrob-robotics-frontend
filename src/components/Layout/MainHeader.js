@@ -1,4 +1,4 @@
-import Cart from '../Cart/Cart';
+import Cart from '../cart/Cart';
 import classes from './MainHeader.module.css';
 import logo from '../../assets/logo.png';
 

@@ -136,7 +136,7 @@ const Cart = (props) => {
             className='card-list'
             key={item.id}
             item={{ 
-              title: item.name.split(" ")[0], 
+              title: 'robot', 
               quantity: item.quantity, 
               total: item.totalPrice, 
               price: item.price,

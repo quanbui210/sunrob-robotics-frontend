@@ -1,6 +1,7 @@
 import { Form } from "react-bootstrap"
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
+import guyImg from '../../assets/guy.jpeg'
 
 import { useSelector } from "react-redux";
 
@@ -15,7 +16,7 @@ export default function UserProfileForm() {
                 <div className="profile-avatar">
                     <Avatar
                         alt="User Avatar"
-                        src="https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg"
+                        src={guyImg}
                         sx={{ width: 130, height: 130 }}
                     /> 
                 </div>        
@@ -23,7 +24,7 @@ export default function UserProfileForm() {
                 </div>
                 <Form className="profile-form">
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
-                        <Form.Label className="form-label">Username:</Form.Label>
+                        <Form.Label className="form-label-profile">Username:</Form.Label>
                         <Form.Control
                             placeholder="username"
                             autoComplete="off"
@@ -33,7 +34,7 @@ export default function UserProfileForm() {
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
-                        <Form.Label className="form-label">User email:</Form.Label>
+                        <Form.Label className="form-label-profile">User email:</Form.Label>
                         <Form.Control
                             placeholder="email"
                             autoComplete="off"
@@ -43,7 +44,7 @@ export default function UserProfileForm() {
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
-                        <Form.Label className="form-label">User role:</Form.Label>
+                        <Form.Label className="form-label-profile">User role:</Form.Label>
                         <Form.Control
                             placeholder="Role"
                             autoComplete="off"
@@ -54,7 +55,7 @@ export default function UserProfileForm() {
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
-                        <Form.Label className="form-label">User Id:</Form.Label>
+                        <Form.Label className="form-label-profile">User Id:</Form.Label>
                         <Form.Control
                             placeholder="Id"
                             autoComplete="off"

@@ -95,6 +95,11 @@ const authSlice = createSlice({
             state.signUpSuccess = false
             state.isAdmin = false
             state.loginSuccess = false
+            state.userLoggedIn = {
+                name: '',
+                userId: '',
+                role: '',
+            }
         })
     }
 })

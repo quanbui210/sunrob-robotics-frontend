@@ -8,30 +8,40 @@
 }
 
 .featured-img {
-    height: 320px;
-    width: 480px;
+    height: 240px;
+    width: 320px;
 }
 
 .featured-title {
-    color: #a9a9a9;
+    color: #ffffff;
     font-size: 40px;
     border-bottom: 3px solid rgba(255, 123, 0, 0.884);
     padding: 40px 0;
 }
 .name-span {
     float: left;
-    font-size: 20px;
+    font-size: 15px;
     color: aliceblue;
+}
+.category-span {
+    font-size: 11px;
+    color: rgba(255, 123, 0, 0.884);
 }
 .price-span {
     float: right;
-    font-size: 20px;
+    font-size: 15px;
 }
 .featured-card {
     margin-top: 60px;
     border-radius: 3px;
     margin-right: 60px;
     margin-bottom: 30px !important;
+}
+.featured-card:hover {
+    cursor: pointer;
+    transform: scale(1.1) !important;
+    transition: all .3s ease-in-out 0s !important;
+    -webkit-transform: all .3s ease-in-out 0s !important;
 }
 
 .viewAll-btn {
