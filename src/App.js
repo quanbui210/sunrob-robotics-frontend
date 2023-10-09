@@ -6,12 +6,12 @@ import Dashboard from './components/dashboard/Dashboard';
 import Products from './components/shop/Products';
 import ProductPage from './components/shop/ProductPage';
 import ProductForm from  './components/dashboard/form/ProductForm'
+import Profile from './components/profile/Profile';
 import { lazy } from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Profile from './components/profile/Profile';
 
 
 
