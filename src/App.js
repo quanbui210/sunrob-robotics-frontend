@@ -1,9 +1,9 @@
-import Products from './components/shop/Products';
 import CheckoutModal from './components/stepper/CheckoutModal';
 import Layout from './components/layout/Layout';
 import LoginPage from './components/auth/LoginPage'
 import HomePage from './components/home/HomePage';
 import Dashboard from './components/dashboard/Dashboard';
+import Products from './components/shop/Products';
 import ProductPage from './components/shop/ProductPage';
 import ProductForm from  './components/dashboard/form/ProductForm'
 import { lazy } from 'react';
