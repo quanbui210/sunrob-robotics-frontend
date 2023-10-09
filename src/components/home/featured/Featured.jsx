@@ -23,7 +23,7 @@ export default function Featured () {
             <Grid sx={{ flexGrow: 1 }} container spacing={4}>
             <Grid item xs={12}>
                 <Grid container justifyContent="center" spacing={7}>
-                {products.filter(product => product.featured === true).map((product) => (
+                {products && products.filter(product => product.featured === true).map((product) => (
                     <Grid onClick={()=> navigate(`/products/${product._id}`)} className='featured-card' key={product._id} item>
                     <img className='featured-img' src={product.image} alt='Featured'/><br/>
                     <span className='name-span'>{product.name} <i className='category-span'>{product.category}</i> </span>

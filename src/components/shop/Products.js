@@ -14,7 +14,6 @@ const Products = (props) => {
   const {data: fetchedData, loading}= useFetch('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products.json')
   const productList = useSelector(state => state.product.products)
   const dispatch = useDispatch()
-  console.log(productList)
   useEffect(()=> {
       dispatch(productActions.getAllProducts())
   }, [dispatch])
@@ -27,7 +26,7 @@ const Products = (props) => {
       <CircularProgress />
     </Box> :  
     <ul>
-        {productList.products.map((product) => (
+        {productList.products && productList.products.map((product) => (
              <ProductItem
               key={product._id}
               title={product.name}
