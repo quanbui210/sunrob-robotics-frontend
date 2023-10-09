@@ -28,8 +28,7 @@ const initialState = {
 }
 
 
-const baseURL = '/api/v1'
-
+const baseURL = 'https://sunrob-webshop.onrender.com/api/v1'
 const getAllProducts = createAsyncThunk('products/getAll', async () => {
     try {
         const response = await axios.get(`${baseURL}/products`)
