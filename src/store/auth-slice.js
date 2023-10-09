@@ -16,7 +16,7 @@ const initialState = {
     }
 }
 
-const baseURL = '/api/v1'
+const baseURL = 'https://sunrob-webshop.onrender.com'
 
 const loginThunk = createAsyncThunk('auth/login', async (user) => {
     try {
