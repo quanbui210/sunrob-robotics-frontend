@@ -1,0 +1,70 @@
+.form-profile-container{
+    border: 2px solid #746e6e;
+    border-radius: 10px;
+    color: #000000 !important;
+    width: 60%;
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #d4d4d4;
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
+.profile-form {
+  margin-top: 80px;
+}
+
+.avatar {
+    display: flex;
+    flex-direction: column; /* Center child elements vertically */
+    align-items: center; /* Center child elements horizontally */
+    border-bottom: 1px solid #2f2f2f;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+
+.profile-avatar {
+    text-align: center !important;
+
+}
+
+.profile-name {
+    margin-left: 10px;
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+.form-control-profile {
+    padding: 10px;
+}
+
+.form-label-profile {
+    float: left;
+    font-size: 16px;
+    min-width: 130px
+
+}
+
+.form-group-profile {
+    margin-top: 15px;
+    align-items: center !important;
+    text-align: center;
+}
+
+.profile-save-btn {
+    padding: 15px 30px;
+    border: none;
+    background-color: #f49c19;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.profile-save-btn:hover {
+    background-color: #fff;
+    color: #f49c19
+}
+
+.btn {
+    text-align: center;
+}

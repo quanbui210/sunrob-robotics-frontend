@@ -1,0 +1,124 @@
+
+
+.page-container {
+    background-color: #fff !important;
+    height: 1000px;
+    margin-top: 17px;
+}
+
+.page-img {
+    margin: 48px 80px;
+    width: 540px;
+    height: 540px;
+}
+
+.page-button {
+    margin-top: 40px !important;
+    float: right;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.page-button:hover {
+    background-color: #d5d5d5 !important;
+    color: #f49c19 !important;
+    cursor: pointer;
+}
+
+h1 {
+    color: #f49c19;
+}
+
+.page {
+    line-height: 22px;
+    color: #6e6e6e;
+    font-size: 14px;
+}
+
+.info-container {
+    border: 2.5px solid #9a9898;
+}
+
+.info-container > h3,
+.info-container > p {
+    margin-left: 30px;
+}
+
+.info-container > p > a {
+    color: #5d9c70
+}
+
+.info-container > p > b {
+    color: #050505;
+}
+
+.deliver {
+    font-size: 13px !important;
+    color: rgb(122, 133, 200);
+    text-decoration: underline; 
+}
+.location-icon {
+    font-size: 12px !important;
+    margin-right: 5px;
+}
+.sale {
+    font-size: 13px;
+}
+
+.stock {
+    color: #5d9c70
+}
+.out-stock {
+    color: rgb(192, 83, 83);
+}
+
+
+@media screen and (max-width: 600px) {
+    .page-img {
+        margin: 48px 80px;
+        width: 200px;
+        height: 300px;
+        display: block;
+    }
+    .page-container {
+        background-color: #fff !important;
+        height: 1300px;
+        font-size: smaller !important;
+        text-align: center;
+    }
+    .page > h1 {
+        font-size: 15px;
+    }
+    .info-container > h3 {
+        font-size: 13px;
+    }
+    .info-container > p {
+        font-size: 11px;
+    }
+    .page > p {
+        font-size: 11px;
+    }
+    .page > ul {
+        font-size: 11px;
+    }
+    .page-button {
+        margin-top: 20px !important;
+        float: right;
+        padding: -36px;
+        border-radius: 8px;
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .page-img {
+        margin: 28px 20px;
+        width: 380px;
+        height: 380px;
+    }
+    .page-container {
+        background-color: #fff !important;
+        height: 1600px;
+        margin-top: 17px;
+    }
+}

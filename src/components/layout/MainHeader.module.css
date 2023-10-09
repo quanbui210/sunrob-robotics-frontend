@@ -1,0 +1,51 @@
+.header {
+  width: 100%;
+  height: 5rem;
+  padding: 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #050031;
+}
+
+
+
+.header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header > ul > li {
+  color: #fff !important;
+}
+
+.logo {
+  width: 230px;
+}
+
+.button {
+  padding: 10px 10px;
+  width: 100%;
+  background-color: #f8921d;
+  margin: 5px 0;
+}
+.buttonLogout {
+  padding: 10px 10px;
+  width: 100%;
+  margin: 30px 0 3px 0;
+
+  background-color: #f82c1d;
+}
+
+.avatarName {
+  color: #fff;
+  border-bottom: none;
+}
+
+
+@media screen and (max-width: 600px) {
+  .logo {
+    width: 130px;
+  }
+}
