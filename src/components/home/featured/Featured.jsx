@@ -14,7 +14,6 @@ export default function Featured () {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const products = useSelector(state => state.product.products.products)
-    console.log(products);
     useEffect(() => {
         dispatch(productActions.getAllProducts())
     }, [dispatch])
@@ -35,7 +34,6 @@ export default function Featured () {
                 <button className='viewAll-btn' onClick={() => navigate('/products')}>All Products</button>
             </Grid>
             </Grid>
-            
         </div>
     )
 }
