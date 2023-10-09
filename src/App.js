@@ -1,5 +1,5 @@
-import Products from './components/shop/Products';
 import CheckoutModal from './components/stepper/CheckoutModal';
+import Products from './components/shop/Products';
 import Layout from './components/layout/Layout';
 import LoginPage from './components/auth/LoginPage'
 import HomePage from './components/home/HomePage';
