@@ -1,6 +1,6 @@
-import Cart from '../cart/Cart';
 import classes from './MainHeader.module.css';
 import logo from '../../assets/logo.png';
+import Cart from '../cart/Cart';
 
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -8,9 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import HistoryIcon from '@mui/icons-material/History';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Tooltip } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -22,6 +20,7 @@ import { useTheme } from '@mui/material/styles';
 import {useState, useEffect} from 'react';
 import { authActions } from '../../store/auth-slice';
 import { toggleActions } from '../../store/toggle-slice';
+import { cartActions } from '../../store/cart-slice';
 
 
 
@@ -29,21 +28,21 @@ const MainHeader = (props) => {
   const theme = useTheme();
   const navigate = useNavigate()
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const [openDialog, setOpenDialog] = useState(false)
+  const {dialogOpen} = useSelector(state => state.toggle)
   const {isLoggedIn, isLoggedOut, userLoggedIn, isAdmin} = useSelector(state => state.auth)
-  console.log(isLoggedIn);
   const dispatch = useDispatch()
   const handleOpen = () => {
-    setOpenDialog(true)
+    dispatch(toggleActions.openDialog())
   }
 
   const handleClose = () => {
-    setOpenDialog(false)
+    dispatch(toggleActions.closeDialog())
   }
 
   const logOut = async () => {
     try {
       await dispatch(authActions.logoutThunk())
+      await dispatch(cartActions.removeAllItems())
       await dispatch(toggleActions.isSignupAction())
     } catch(e) {
       console.log(e);
@@ -67,7 +66,7 @@ const MainHeader = (props) => {
         </ul>
         <Dialog
         fullScreen={fullScreen}
-        open={openDialog}
+        open={dialogOpen}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >

@@ -6,6 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 // import '@fontsource/roboto/400.css';
 const CartItem = (props) => {
   const { title, quantity, total, price, id, image } = props.item;
+  const {sum} = props
   const dispatch = useDispatch()
 
   const addItemHandler = () => {
@@ -41,7 +42,7 @@ const CartItem = (props) => {
         <div className={classes.quantity}>
           x <span>{quantity}</span>
         </div>
-        <div className={classes.actions}>
+        {!sum && <div className={classes.actions}>
           <Tooltip title="Remove this item">
             <button className={classes.deleteAll}  onClick={removeWholeItemHandler}>
               <DeleteForeverIcon/>
@@ -49,7 +50,7 @@ const CartItem = (props) => {
           </Tooltip>
           <button onClick={removeItemHandler}>-</button>
           <button onClick={addItemHandler }>+</button>
-        </div>
+        </div>}
       </div>
     </li>
   );

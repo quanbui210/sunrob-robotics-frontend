@@ -16,11 +16,13 @@ const initialState = {
     }
 }
 
-const baseURL = 'https://sunrob-webshop.onrender.com/api/v1'
+const baseURL = '/api/v1'
 
 const loginThunk = createAsyncThunk('auth/login', async (user) => {
     try {
-        const response = await axios.post(`${baseURL}/auth/login`, user)
+        const response = await axios.post(`${baseURL}/auth/login`, user, {
+            withCredentials: true
+        })
         console.log(response.data)
         return response.data
     } catch (e) {
@@ -39,7 +41,7 @@ const logoutThunk = createAsyncThunk('auth/logout', async () => {
 
 const signupThunk = createAsyncThunk('auth/signup', async (user) => {
     try {
-        const response = await axios.post(`${baseURL}/auth/signup`, user)
+        const response = await axios.post(`${baseURL}/auth/signup`, user, {withCredentials: true})
         console.log(response.data);
         return response.data
     } catch (e) {

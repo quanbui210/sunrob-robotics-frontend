@@ -30,7 +30,7 @@ export default function UserProfileForm() {
                             autoComplete="off"
                             className="form-control-profile"
                             name="form-name"
-                            value={userLoggedIn.name}
+                            defaultValue={userLoggedIn.name}
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">
@@ -40,7 +40,7 @@ export default function UserProfileForm() {
                             autoComplete="off"
                             className="form-control-profile"
                             name="form-useremail"
-                            value={userLoggedIn.email}
+                            defaultValue={userLoggedIn.email}
                         />
                     </Form.Group>
                     <Form.Group className="form-group-profile" controlId="formBasicEmail">

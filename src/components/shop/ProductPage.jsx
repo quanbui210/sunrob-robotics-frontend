@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { productActions } from "../../store/product-slice";
 import { cartActions } from "../../store/cart-slice";
+import ReactStars from "react-rating-stars-component";
 
 
 export default  function ProductPage () { 
@@ -18,11 +19,12 @@ export default  function ProductPage () {
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useDispatch()
-    const product = useSelector(state => state.product.product)
-    
+    const {product, reviews} = useSelector(state => state.product)
+    console.log(reviews);
     useEffect(()=> {
       window.scrollTo(0,0)
       dispatch(productActions.getOneProdut(id))
+      dispatch(productActions.getReviews(id))
      }, [dispatch, id])
 
     const addToCartHandler = () => {
@@ -40,7 +42,7 @@ export default  function ProductPage () {
     const disabled =  false 
     return <div className="page-container">
         {!matchesPhone ?
-           <Grid container spacing={matchesPhone ? 2 : 1}>
+           <Grid className="product-ovr" container spacing={matchesPhone ? 2 : 1}>
            <Grid style={{display: 'block', width:'100%'}}>
                <Button className="go-back" onClick={()=> {
                    navigate('..')
@@ -127,15 +129,15 @@ export default  function ProductPage () {
                    Let your children get creative and the results will be unexpected! The robot toy contains over 18 songs, 4 scientific tricks and two stories.
                </li>
            </ul>
-       {disabled ? <Button
-           onClick={addToCartHandler}
-           disabled
-           className="page-button"
-           style={{
-               backgroundColor: "#ccc",
-                   pointerEvents: "none"
-               }}
-           >
+            {disabled ? <Button
+                onClick={addToCartHandler}
+                disabled
+                className="page-button"
+                style={{
+                    backgroundColor: "#ccc",
+                        pointerEvents: "none"
+                    }}
+                >
                Add to Basket
            </Button> : <Button
                onClick={addToCartHandler}
@@ -150,8 +152,26 @@ export default  function ProductPage () {
        </Button>}
        </Grid>
    </Grid>
-        }
-       
+    }
+    <div className="review-container">
+        
+        <ul>
+            {reviews.map(review => <li className="review-item" key={review._id}>
+                <div>
+                    <p>{review.user.name}</p>
+                    <ReactStars 
+                        size={30}
+                        value={review.rating}
+                        edit={false}
+                        classNames='star-review'
+                        isHalf={true}
+                    />
+                    <h4 className="review-title">{review.title}</h4>
+                    <span className="review-comment">{review.comment}</span>
+                </div>
+            </li>)}
+        </ul>
+    </div>
     </div>
 }
 

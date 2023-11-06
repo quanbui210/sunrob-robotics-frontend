@@ -1,18 +1,19 @@
-import { Button } from '@mui/material';
 import classes from './ProductItem.module.css';
 import { useDispatch } from 'react-redux';
 import {cartActions} from '../../store/cart-slice'
-import Card from '@mui/material/Card';
 import { Link } from 'react-router-dom';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+
+import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SearchIcon from '@mui/icons-material/Search';
+
+import ReactStars from "react-rating-stars-component";
+
+
 import './ProductItem.css'
 
-
-
 const ProductItem = (props) => {
-  const { title, price, description, id, image, availability } = props;
+  const { title, price, description, id, image, availability, averageRating, numOfReviews, category } = props;
   const dispatch = useDispatch()
   const addToCartHandler = () => {
     dispatch(
@@ -42,6 +43,16 @@ const ProductItem = (props) => {
           <Typography gutterBottom variant="h6" component="div">
             {title}
           </Typography>
+          <div style={{display: "flex", alignItems:"center", justifyContent:"center"}}>
+          <ReactStars 
+              size={20}
+              value={averageRating}
+              edit={false}
+              classNames='star-review'
+              isHalf={true}
+            />
+            <span className='num-reviews'>({numOfReviews})</span>
+          </div>
          {!availability ? <p 
             style={{
               fontSize: '10.6px',
@@ -57,7 +68,7 @@ const ProductItem = (props) => {
             </p>}
           <span className="card-price">${price && price.toFixed(2)} / kpl</span>
           <p className="card-desc">
-            {description}
+            category: {category}
           </p>
 
         {disabled?  
@@ -70,7 +81,7 @@ const ProductItem = (props) => {
           <Button
             className='card-btn' 
             size="small"  onClick={addToCartHandler}>
-            Add to cart
+            <ShoppingCartIcon/>
           </Button>
         }
 
@@ -78,7 +89,7 @@ const ProductItem = (props) => {
           <Button 
             className='card-btn-view' 
             size="small">
-              View
+              <SearchIcon/>
           </Button>
         </Link>
         </CardContent>

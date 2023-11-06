@@ -42,6 +42,9 @@
     opacity: 0.7;
  }
 
+ .order-li-item {
+    margin: 15px 0;
+ }
 
  @media screen and (max-width: 600px) {
   .history-card {
@@ -64,4 +67,44 @@
   padding: 10px;
   color: #fff;
   border-radius: 5px;
+ }
+
+
+ .review-form-group {
+  margin: 26px 0;
+ }
+ .review-form-select {
+  display: flex;
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px 0;
+ }
+
+ .review-form-input {
+  margin: 5px 0;
+  width: 100% !important;
+ }
+ .review-form-input-cmt {
+  height: 140px; /* Set your preferred height */
+  width: 100%; /* Set your preferred width */
+  resize: vertical; 
+ }
+
+ .review-form {
+  width: 500px !important;
+ }
+
+ .review-form-btn {
+  padding: 8px;
+  margin: 0 2px;
+ }
+
+ .submit {
+  background-color: rgba(74, 74, 74, 0.884);
+  color: #fff;
+ }
+
+ .cancel {
+  background-color: #c90f0f;
+  color: #fff;
  }

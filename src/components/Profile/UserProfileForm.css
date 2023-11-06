@@ -15,6 +15,22 @@
   margin-top: 80px;
 }
 
+input {
+    padding: 10px;
+    min-width: 300px !important;
+    width: 70% !important;
+    margin: 0 -5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #3367d6;
+    cursor: pointer;
+  }
+  
+
 .avatar {
     display: flex;
     flex-direction: column; /* Center child elements vertically */

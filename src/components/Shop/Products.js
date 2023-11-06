@@ -1,32 +1,31 @@
 import ProductItem from './ProductItem';
 import classes from './Products.module.css';
-import axios from 'axios';
-import {useState, useEffect} from 'react'
+import { productActions } from '../../store/product-slice';
+
+import {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import useFetch from '../../helper/useFetch';
-import Badge from '@mui/material/Badge';
-import { useSelector, useDispatch } from 'react-redux';
-import { productActions } from '../../store/product-slice';
 
 
 const Products = (props) => {
-  const {data: fetchedData, loading}= useFetch('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/products.json')
-  const productList = useSelector(state => state.product.products)
+  const {products, isLoading} = useSelector(state => state.product)
   const dispatch = useDispatch()
   useEffect(()=> {
       dispatch(productActions.getAllProducts())
   }, [dispatch])
   return (
     <section className={classes.products}>
-      <h2 style={{marginBottom: '100px'}}>Our Robot Products</h2>
+      <h2 style={{marginBottom: '100px'}}>Products</h2>
 
-    {loading ?  
+      <input type='text' placeholder='Search...'/>
+    {isLoading ?  
     <Box sx={{ display: 'flex', textAlign:'center', justifyContent:'center', alignItems: 'center' }}>
       <CircularProgress />
     </Box> :  
     <ul>
-        {productList.products && productList.products.map((product) => (
+        {products.products && products.products.map((product) => (
              <ProductItem
               key={product._id}
               title={product.name}
@@ -35,6 +34,9 @@ const Products = (props) => {
               id={product._id}
               image={product.image}
               availability={product.status}
+              averageRating={product.averageRating}
+              numOfReviews={product.numOfReviews}
+              category={product.category}
             />
         ))}
       </ul>}

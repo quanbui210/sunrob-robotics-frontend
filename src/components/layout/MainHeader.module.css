@@ -6,6 +6,9 @@
   align-items: center;
   justify-content: space-between;
   background-color: #050031;
+  position: fixed;
+  top: 0 !important;
+  z-index: 999;
 }
 
 

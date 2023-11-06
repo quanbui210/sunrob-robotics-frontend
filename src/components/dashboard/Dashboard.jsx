@@ -1,7 +1,7 @@
 import { useSelector, useDispatch} from "react-redux"
 import { useNavigate } from "react-router"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import {Card, CardContent, Grid, Typography} from "@mui/material"
 import AddIcon from '@mui/icons-material/Add'
@@ -24,6 +24,18 @@ export default function Dashboard() {
     useEffect(()=> {
         dispatch(productActions.getAllProducts())
     }, [dispatch])
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
+    const handleDelete = async(id) => {
+            const confirm = window.confirm('Delete this book?')
+            if(confirm) {
+                await dispatch(productActions.deleteProduct(id))
+                refreshPage()
+            } 
+    }
 
     return (
         <div className="dashboard-container" style={{marginTop:"60px"}}>
@@ -92,7 +104,7 @@ export default function Dashboard() {
               </AddIcon>
               {products.products.map((product) => (
                 <div key={product._id} className="product-item">
-                  <h5 className="a-book">ID: {product._id}</h5>
+                  <img alt="product-img" className="dashboard-img" src={product.image}></img>
                   <h4 className="a-name">{product.name}</h4>
                   <h5 className="a-name"> Category: {product.category}</h5>
                   <h5 className="a-id">Status: {product.status}</h5>
@@ -106,13 +118,7 @@ export default function Dashboard() {
                     />
                     <DeleteIcon
                       className="author-actions"
-                      onClick={() => {
-                        const confirm = window.confirm('Delete this book?')
-                        if(confirm) {
-                            dispatch(productActions.deleteProduct(product._id))
-                            navigate('/dashboard')
-                        }
-                      }}
+                      onClick={()=> handleDelete(product._id)}
                     />
                   </div>
                 </div>

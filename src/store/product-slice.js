@@ -17,18 +17,19 @@ const productInterface = {
 
 const initialState = {
     isLoading: false,
-    products: [],
+    products: [productInterface],
     imageUrl: '',
     addProductSuccess: false,
     product: productInterface,
     isDeleting: false,
     deleteSuccess: false,
     editSuccess: false,
-    isEditing: false
+    isEditing: false,
+    reviews: []
 }
 
 
-const baseURL = 'https://sunrob-webshop.onrender.com/api/v1'
+const baseURL = '/api/v1'
 const getAllProducts = createAsyncThunk('products/getAll', async () => {
     try {
         const response = await axios.get(`${baseURL}/products`)
@@ -95,6 +96,15 @@ const getOneProdut = createAsyncThunk('products/getOne', async(id) => {
     }
 })
 
+const getReviews = createAsyncThunk('products/review', async(id) => {
+    try {
+        const response = await axios.get(`${baseURL}/products/${id}/reviews`)
+        const reviews = response.data
+        return reviews
+    } catch(e) {
+        console.log(e);
+    }
+})
 
 const productsSlice = createSlice({
     name: 'products',
@@ -120,6 +130,7 @@ const productsSlice = createSlice({
         }) 
         builder.addCase(addProduct.fulfilled, (state, action)=> {
             state.addProductSuccess = true
+            state.imageUrl = ''
         }) 
         builder.addCase(deleteProduct.pending, (state) => {
             state.isDeleting = true
@@ -127,6 +138,7 @@ const productsSlice = createSlice({
         builder.addCase(deleteProduct.fulfilled, (state) => {
             state.deleteSuccess = true
             state.isDeleting = false
+            state.imageUrl = ''
         })
         builder.addCase(deleteProduct.rejected, (state)=> {
             state.deleteSuccess = false
@@ -141,15 +153,20 @@ const productsSlice = createSlice({
         builder.addCase(editProduct.fulfilled, (state, action) => {
             state.editSuccess = true
             state.isEditing = false
-            console.log(action.payload);
+            console.log(action.payload)
             state.product = action.payload.product
+            state.imageUrl = ''
+
         })
         builder.addCase(editProduct.rejected, state => {
             state.editSuccess = false
             state.isEditing = false
         })
+        builder.addCase(getReviews.fulfilled, (state,action) => {
+            state.reviews = action.payload
+        })
     }
 })
 
-export const productActions = {...productsSlice.actions, getAllProducts, uploadImage, addProduct, deleteProduct, getOneProdut, editProduct}
+export const productActions = {...productsSlice.actions, getAllProducts, uploadImage, addProduct, deleteProduct, getOneProdut, editProduct, getReviews}
 export default productsSlice

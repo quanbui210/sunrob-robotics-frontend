@@ -12,3 +12,8 @@
     background-color: rgb(255, 255, 255) !important;
     color: #1f1f1f !important
 }
+
+.dashboard-img {
+    max-width: 100px;
+    margin-bottom: 20px;
+}

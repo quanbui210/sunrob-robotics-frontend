@@ -15,13 +15,17 @@ import { toggleActions } from '../../store/toggle-slice';
 import { cartActions } from '../../store/cart-slice';
 import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router';
-import axios from 'axios';
-import UserForm from './userForm';
-import { useMediaQuery } from '@mui/material';
+import {Dialog, DialogTitle, DialogContent} from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
 const Cart = (props) => {
   const cartQuantity = useSelector(state => state.cart.totalQuantity)
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const [openDialog, setOpenDialog] = useState(false)
+  const {isLoggedIn} = useSelector(state => state.auth)
   const [total, setTotal] = useState(0);
   const [btnIsBumped, setBtnIsBumped] = useState(false)
   const [cartIsEmpty, setCartIsEmpty] = useState(true)
@@ -48,28 +52,35 @@ const Cart = (props) => {
   };
   const cartItems = useSelector(state => state.cart.items)
   const checkoutHandler = (e) => {
-    setShowForm(true)
+    if (isLoggedIn) {
+      setOpenDialog(true)
+    } else {
+      dispatch(toggleActions.openDialog())
+    }
   }
 
-  const submitOrderHandler = (userData) => {
-    const date = new Date()
-    const day = date.getDate()
-    const month = date.getMonth() + 1
-    const year = date.getFullYear()
-    let orderDate = `${day} - ${month} - ${year}`
-  
+  const submitOrderHandler = () => {
+    let tax = 9
+    let shippingFee = 29
+    let orderSummary = {
+      tax,
+      shippingFee,
+      items: cartItems
+    }
+    
     // dispatch(toggleActions.show())
     dispatch(cartActions.removeAllItems())
-    axios.post('https://sunrob-ebf44-default-rtdb.europe-west1.firebasedatabase.app/orders.json', {
-      orderedProducts: cartItems,
-      date: orderDate,
-      userData: userData,
-      total: total,
-    })
+    dispatch(cartActions.createOrderThunk(orderSummary))
     setShowForm(false)
     dispatch(toggleActions.show())
     navigate('/')
   }
+
+
+
+  const handleClose = () => {
+      setOpenDialog(false); 
+  };
 
   const btnClasses =  `${styles.button} ${btnIsBumped ? styles.bump : ''}` 
   
@@ -119,12 +130,37 @@ const Cart = (props) => {
       </Badge>
     </Button>
     </Tooltip>
-    {showForm && <Drawer
-     anchor='right'
-     open={state['right']}
-     onClose={toggleDrawer('right', false)}>
-      <UserForm onSubmit={submitOrderHandler} setShowForm={setShowForm}/>
-      </Drawer>}
+    {openDialog && 
+           <Dialog
+              fullScreen={fullScreen}
+              open={openDialog}
+              onClose={handleClose}
+              aria-labelledby="responsive-dialog-title"> 
+                <div className='order-sum'>
+                  <DialogTitle>Order Summary</DialogTitle>
+                  {cartItems.map(item => (
+                    <CartItem
+                      className='card-list'
+                      key={item.id}
+                      sum={true}
+                      item={{ 
+                        title: item.name, 
+                        quantity: item.quantity, 
+                        total: item.totalPrice, 
+                        price: item.price,
+                        id: item.id,
+                        image: item.image
+                      }}
+                    />
+                    ))}
+                    <span>Subtotal: ${total}</span> <br></br>
+                    <span>+tax: $9</span> <br/>
+                    <span>+shipping fee: $29</span> <br/>
+                    <h4>Total: ${total + 9 + 29}</h4>
+                    <button onClick={submitOrderHandler} className='order'>Order & Pay</button>
+                    <button onClick={handleClose} className='cancel'>X</button>
+                </div>
+            </Dialog>}
     {!cartIsEmpty && !showForm &&  <Drawer 
       className='cart-ul'
       anchor='right'
@@ -136,7 +172,7 @@ const Cart = (props) => {
             className='card-list'
             key={item.id}
             item={{ 
-              title: 'robot', 
+              title: item.name, 
               quantity: item.quantity, 
               total: item.totalPrice, 
               price: item.price,

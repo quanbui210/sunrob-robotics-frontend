@@ -1,12 +1,46 @@
-import { PersonRemoveAlt1Outlined } from '@mui/icons-material';
-import {createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import axios from 'axios'
 
+const baseURL = '/api/v1'
+const createOrderThunk = createAsyncThunk('order/create', async (order) => {
+    try {
+        const response = await axios.post(`${baseURL}/orders`, order)
+        const newOrder = await response.data
+        return newOrder
+    } catch (e) {
+        
+    }
+})
+const showUserOrder = createAsyncThunk('order/showOrder', async() => {
+    try {
+        const response = await axios.get(`${baseURL}/orders/showOrders`)
+        const orders = await response.data
+        return orders
+    } catch (e) {
+        
+    }
+})
+const createReview = createAsyncThunk('order/review', async(review, {rejectWithValue}) => {
+    try {
+        const response = await axios.post(`${baseURL}/reviews`, review)
+        const newReview = await response.data
+        return newReview
+    } catch(e) {
+        return rejectWithValue(e.reponse?.data || 'Your have already reviewed this product')
 
+    }
+})
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         items: [],
         totalQuantity: 0,
+        orderError: false,
+        pending: false,
+        newOrder: {},
+        myOrders: [],
+        reviewFailed: false,
+        reviewError: ''
     },
     reducers:  {
         add(state, action) {
@@ -26,6 +60,9 @@ const cartSlice = createSlice({
                 existingItem.quantity++
                 existingItem.totalPrice = existingItem.totalPrice + newItem.price
             }
+        },
+        toggleError(state) {
+            state.reviewFailed = false
         },
         remove(state, action) {
           const id = action.payload
@@ -48,8 +85,28 @@ const cartSlice = createSlice({
             state.items = []
             state.totalQuantity = 0
         }
-    } 
+    },
+    extraReducers: (builder) => {
+        builder.addCase(createOrderThunk.pending, state => {
+            state.pending = true
+        }) 
+        builder.addCase(createOrderThunk.fulfilled, (state, action) => {
+            state.pending = false
+            state.newOrder = action.payload
+        })
+        builder.addCase(createOrderThunk.rejected, state => {
+            state.orderError = true
+        })
+        builder.addCase(showUserOrder.fulfilled, (state,action) => {
+            state.myOrders = action.payload.reverse()
+            state.reviewFailed = false
+        })
+        builder.addCase(createReview.rejected, (state, action) => {
+            state.reviewFailed = true
+            state.reviewError = action.payload
+        })
+        } 
 })
 
-export const cartActions = cartSlice.actions
+export const cartActions = {...cartSlice.actions, createOrderThunk, showUserOrder, createReview}
 export default cartSlice

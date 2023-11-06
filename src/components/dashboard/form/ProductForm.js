@@ -8,7 +8,7 @@ export default function AddProductForm ({mode}) {
     const dispatch = useDispatch()
     const { id } = useParams()
     const cloudImgUrl = useSelector(state => state.product.imageUrl)
-    console.log(cloudImgUrl);
+    console.log(cloudImgUrl)
     const navigate = useNavigate()
     const fetchedProduct = useSelector(state => state.product.product)
     const [formData, setFormData] = useState({
@@ -58,6 +58,7 @@ export default function AddProductForm ({mode}) {
             await formDataImage.append('image', image);
             await dispatch(productActions.uploadImage(formDataImage));
             setCurrentImageUrl(cloudImgUrl)
+
         }
       }
 
@@ -153,7 +154,7 @@ export default function AddProductForm ({mode}) {
                 <Form.Group className="select-form">
                     <Form.Label className="add-label">Status</Form.Label>
                     <Form.Select value={formData.status} onChange={handleInputChange} name="status" size="lg" aria-label="status selection" className="select-input">
-                        <option value="available">Avaiable</option>
+                        <option value="available">Available</option>
                         <option value="Out of stock">Out of stock</option>
                     </Form.Select>
                 </Form.Group>

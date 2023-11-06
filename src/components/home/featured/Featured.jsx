@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 export default function Featured () {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const products = useSelector(state => state.product.products.products)
+    const products = useSelector(state => state.product.products.products) || []
     useEffect(() => {
         dispatch(productActions.getAllProducts())
     }, [dispatch])
