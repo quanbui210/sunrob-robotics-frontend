@@ -69,15 +69,15 @@
     padding: 40px
 }
 
-.order-sum > button {
-    padding: 7px;
+.order-sum button {
+    padding: 10px !important;
     text-align: center;
     width: 100%;
     margin: 6px 0;
     color: #050031;
 }
 
-.order-sum > button:hover {
+.order-sum  button:hover {
     background-color: #ccc !important;
 }
 

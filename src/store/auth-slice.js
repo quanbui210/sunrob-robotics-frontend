@@ -13,7 +13,8 @@ const initialState = {
         name: '',
         userId: '',
         role: '',
-    }
+    },
+    allUsers: [],
 }
 
 const baseURL = '/api/v1'
@@ -23,7 +24,6 @@ const loginThunk = createAsyncThunk('auth/login', async (user) => {
         const response = await axios.post(`${baseURL}/auth/login`, user, {
             withCredentials: true
         })
-        console.log(response.data)
         return response.data
     } catch (e) {
         console.log(e)
@@ -42,7 +42,15 @@ const logoutThunk = createAsyncThunk('auth/logout', async () => {
 const signupThunk = createAsyncThunk('auth/signup', async (user) => {
     try {
         const response = await axios.post(`${baseURL}/auth/signup`, user, {withCredentials: true})
-        console.log(response.data);
+        return response.data
+    } catch (e) {
+        console.log(e);
+    }
+})
+
+const getAllUsers = createAsyncThunk('auth/getAll', async () => {
+    try {
+        const response = await axios.get(`${baseURL}/users`)
         return response.data
     } catch (e) {
         console.log(e);
@@ -103,8 +111,11 @@ const authSlice = createSlice({
                 role: '',
             }
         })
+        builder.addCase(getAllUsers.fulfilled, (state, action) => {
+            state.allUsers = action.payload
+        })
     }
 })
 
-export const authActions = {...authSlice.actions, signupThunk, loginThunk, logoutThunk}
+export const authActions = {...authSlice.actions, signupThunk, loginThunk, logoutThunk, getAllUsers}
 export default authSlice

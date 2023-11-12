@@ -41,7 +41,10 @@ const Cart = (props) => {
 
   const matchesPhone = useMediaQuery('(max-width:600px)');
 
- 
+  const handleClose = () => {
+    setOpenDialog(false); 
+};
+
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -56,6 +59,7 @@ const Cart = (props) => {
       setOpenDialog(true)
     } else {
       dispatch(toggleActions.openDialog())
+      setState({...state, right: false})
     }
   }
 
@@ -67,20 +71,14 @@ const Cart = (props) => {
       shippingFee,
       items: cartItems
     }
-    
-    // dispatch(toggleActions.show())
-    dispatch(cartActions.removeAllItems())
     dispatch(cartActions.createOrderThunk(orderSummary))
+    dispatch(cartActions.removeAllItems())
+    handleClose()
     setShowForm(false)
     dispatch(toggleActions.show())
     navigate('/')
   }
 
-
-
-  const handleClose = () => {
-      setOpenDialog(false); 
-  };
 
   const btnClasses =  `${styles.button} ${btnIsBumped ? styles.bump : ''}` 
   
@@ -138,6 +136,7 @@ const Cart = (props) => {
               aria-labelledby="responsive-dialog-title"> 
                 <div className='order-sum'>
                   <DialogTitle>Order Summary</DialogTitle>
+                  <DialogContent>
                   {cartItems.map(item => (
                     <CartItem
                       className='card-list'
@@ -159,6 +158,7 @@ const Cart = (props) => {
                     <h4>Total: ${total + 9 + 29}</h4>
                     <button onClick={submitOrderHandler} className='order'>Order & Pay</button>
                     <button onClick={handleClose} className='cancel'>X</button>
+                  </DialogContent>
                 </div>
             </Dialog>}
     {!cartIsEmpty && !showForm &&  <Drawer 

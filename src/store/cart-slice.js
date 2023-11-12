@@ -30,6 +30,15 @@ const createReview = createAsyncThunk('order/review', async(review, {rejectWithV
 
     }
 })
+const getAllOrders = createAsyncThunk('order/allOrders', async() => {
+    try {
+        const response = await axios.get(`${baseURL}/orders`)
+        const orders = await response.data
+        return orders
+    } catch (e) {
+        
+    }
+})
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
@@ -40,7 +49,8 @@ const cartSlice = createSlice({
         newOrder: {},
         myOrders: [],
         reviewFailed: false,
-        reviewError: ''
+        reviewError: '',
+        allOrders: []
     },
     reducers:  {
         add(state, action) {
@@ -105,8 +115,11 @@ const cartSlice = createSlice({
             state.reviewFailed = true
             state.reviewError = action.payload
         })
+        builder.addCase(getAllOrders.fulfilled, (state, action) =>{
+            state.allOrders = action.payload.reverse()
+        })
         } 
 })
 
-export const cartActions = {...cartSlice.actions, createOrderThunk, showUserOrder, createReview}
+export const cartActions = {...cartSlice.actions, createOrderThunk, showUserOrder, createReview, getAllOrders}
 export default cartSlice

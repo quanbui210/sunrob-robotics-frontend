@@ -2,19 +2,18 @@ import ProductItem from './ProductItem';
 import classes from './Products.module.css';
 import { productActions } from '../../store/product-slice';
 
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { authActions } from '../../store/auth-slice';
 
 
 const Products = (props) => {
   const {products, isLoading} = useSelector(state => state.product)
-  const dispatch = useDispatch()
-  useEffect(()=> {
-      dispatch(productActions.getAllProducts())
-  }, [dispatch])
+
   return (
     <section className={classes.products}>
       <h2 style={{marginBottom: '100px'}}>Products</h2>
