@@ -24,6 +24,7 @@ const loginThunk = createAsyncThunk('auth/login', async (user) => {
         const response = await axios.post(`${baseURL}/auth/login`, user, {
             withCredentials: true
         })
+        console.log(response);
         return response.data
     } catch (e) {
         console.log(e)
@@ -32,7 +33,7 @@ const loginThunk = createAsyncThunk('auth/login', async (user) => {
 
 const logoutThunk = createAsyncThunk('auth/logout', async () => {
     try {
-        const response = await axios.get(`${baseURL}/auth/logout`)
+        const response = await axios.delete(`${baseURL}/auth/logout`)
         return response.data
     } catch(e) {
         console.log(e);
@@ -77,6 +78,7 @@ const authSlice = createSlice({
             state.isLoading =  true
         })
         builder.addCase(loginThunk.fulfilled, (state, action)=> {
+            console.log(action.payload);
             state.isLoading = false
             state.isLoggedIn = true
             state.loginSuccess = true

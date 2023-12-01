@@ -19,10 +19,6 @@ const LoginForm = () => {
     const {isSignup, isLogin} = useSelector(state => state.toggle)
 
 
-
-    console.log(signUpSuccess);
-
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userNameHandler = (e) => {
@@ -120,6 +116,7 @@ const LoginForm = () => {
           )}
         </Form.Group>
         {(!signUpSuccess || isSignup) && !isLogin ? (
+          <div>
           <span className="signup">
             Already have an account?{' '}
             <a
@@ -130,8 +127,20 @@ const LoginForm = () => {
               Login
             </a>{' '}
             here
+          </span> <br/>
+          <span className="signup">
+            <a
+             className='signup-span'
+              onClick={() => {
+                dispatch(toggleActions.isLogin())
+              }}>
+              Forgot Password?
+            </a>{' '}
           </span>
+          </div>
+          
         ) : (
+          <div>
           <span className="signup">
             Dont have an account yet?{' '}
             <a
@@ -142,7 +151,17 @@ const LoginForm = () => {
               SignUp
             </a>{' '}
             now
+          </span> <br/>
+          <span className="signup">
+            <a
+             className='signup-span'
+              onClick={() => {
+                dispatch(toggleActions.isLogin())
+              }}>
+              Forgot Password?
+            </a>{' '}
           </span>
+          </div>
         )}
       </Form>
     </>

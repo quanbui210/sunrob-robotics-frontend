@@ -24,10 +24,8 @@ const OrderHistory = () => {
     title: "",
     comment: "",
   });
-  const [reviewSuccess, setReviewSuccess] = useState(false); // New state for tracking review success
 
   const {myOrders: orders, reviewFailed, reviewError} = useSelector(state => state.cart)
-  console.log(reviewFailed, reviewError);
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(cartActions.showUserOrder())
@@ -35,10 +33,6 @@ const OrderHistory = () => {
 
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
-  const handleClickOpen = () => {
-    setOpenDialog(true);
-  };
 
   const handleClose = () => {
       setOpenDialog(false); 
@@ -66,7 +60,6 @@ const OrderHistory = () => {
         title: "",
         comment: "",
       });
-      setReviewSuccess(true); // Set reviewSuccess to true on successful review
       handleClose();
     } catch (error) {
       console.error("Review failed:", error);
@@ -74,17 +67,16 @@ const OrderHistory = () => {
   };
 
 
+  const handleReviewFailure = useCallback(() => {
+    alert('You have already reviewed this product');
+    dispatch(cartActions.toggleError());
+  }, [dispatch]);
+
+
   if (reviewFailed) {
-    const confirm = window.confirm('Already review this product')
-    if (confirm) {
-      dispatch(cartActions.toggleError())
-    }
+    handleReviewFailure();
   }
 
-  if (reviewSuccess) {
-    window.alert('Thanks for reviewing! We appreciate it.')
-    setReviewSuccess(false)
-  }
 
   return (
     <>

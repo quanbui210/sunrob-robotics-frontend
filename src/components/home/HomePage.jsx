@@ -29,12 +29,13 @@ export default function HomePage () {
       const checkAuthentication = async() => {
         const response = await axios.get('api/v1/auth/checkToken')  
         console.log(response.data);
-        if (response.data.authenticated === true && response.data.token) {
-          console.log(response.data.token);
+        if (response.data.authenticated === true) {
+          console.log('Authenticated');
         } else {
           if (isLoggedIn) {
             window.alert('unauthenticated, please login again')
             dispatch(authActions.logoutThunk())
+            navigate('/login-form')
           }
         }
       }
