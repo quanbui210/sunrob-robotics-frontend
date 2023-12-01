@@ -1,8 +1,8 @@
 # Sunrob-Robotics
 Demo Shopping Website for Sunrob Robotics (Frontend), a robotic company in Lappeenranta
 
-# Features:
-* USER:
+### Features:
+**Strong text** USER:
 - Browse products
 - Add products to cart, make order
 - View profile page, order history
@@ -10,14 +10,14 @@ Demo Shopping Website for Sunrob Robotics (Frontend), a robotic company in Lappe
 - Login / Register 
 - Forgot password -> email -> link to reset password
 
-* ADMIN
+**Strong text** ADMIN
 - Admin dasboard
 - Create, Modify, Delete products via admin dashboard
 - View all users orders
 - List of users
 
 
-* UPCOMING FEATURES
+**Strong text** UPCOMING FEATURES
 - Verify account after register (real email only)
 - Payment with Stripe
 - Send welcome email
@@ -30,19 +30,19 @@ Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 
 
 
-# Admin Dashboard
+ Admin Dashboard
 
 ![admin dashboard](image-3.png)
 
-# View Order History
+## View Order History
 ![order-history](image-2.png)
 
-# Profile 
+## Profile 
 
 ![profile](image-1.png)
 
 
-# Review Ordered Product
+## Review Ordered Product
 
 ![review](image.png)
 
