@@ -32,14 +32,14 @@ Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 
  Admin Dashboard
 
-![admin dashboard](image-3.png)
+![admin dashboard](./src/assets/image-3.png)
 
 ### View Order History
-![order-history](image-2.png)
+![order-history](./src/assets/image-3.png)
 
 ### Profile 
 
-![profile](image-1.png)
+![profile](./src/assets/image-1.png)
 
 
 ### Review Ordered Product
