@@ -44,7 +44,7 @@ Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 
 ### Review Ordered Product
 
-![review](image.png)
+![review](./src/assets/image.png)
 
 
 
