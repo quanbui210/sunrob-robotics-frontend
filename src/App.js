@@ -7,6 +7,8 @@ import Products from './components/shop/Products';
 import ProductPage from './components/shop/ProductPage';
 import ProductForm from  './components/dashboard/form/ProductForm'
 import Profile from './components/profile/Profile';
+import ForgotPassword from './components/auth/ForgotPassword';
+import ResetPassword from './components/auth/ResetPassword';
 import { lazy } from 'react';
 import {
   createBrowserRouter,
@@ -41,14 +43,22 @@ const router = createBrowserRouter([
     element: <Layout><LoginPage/></Layout>,
   },
   {
+    path: '/forgot-password',
+    element: <Layout><ForgotPassword/></Layout>
+  },
+  {
+    path: '/reset-password',
+    element: <Layout><ResetPassword/></Layout>
+  },
+  {
     path: '/dashboard/add',
     element: <Layout><ProductForm mode="add"/></Layout>
   },
-  
   {
     path: '/dashboard/edit/:id',
     element: <Layout><ProductForm mode="edit"/></Layout>
-  }
+  },
+ 
 ])
 
 

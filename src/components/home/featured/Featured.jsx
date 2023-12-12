@@ -13,10 +13,18 @@ import { useEffect } from 'react';
 export default function Featured () {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const products = useSelector(state => state.product.products.products) || []
+    const {products: {products}} = useSelector(state => state.product) || []
+    
+    
     useEffect(() => {
         dispatch(productActions.getAllProducts())
     }, [dispatch])
+
+    if (!products) {
+        return <div>
+            <h3>No products found</h3>
+        </div>
+    }
     return (
         <div className="featured-container">
             <h1 className='featured-title'>Featured Products</h1>

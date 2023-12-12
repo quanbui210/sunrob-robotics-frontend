@@ -19,8 +19,8 @@ export default  function ProductPage () {
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useDispatch()
-    const {product, reviews} = useSelector(state => state.product)
-    console.log(reviews);
+    const {product} = useSelector(state => state.product)
+    console.log(product.reviews);
     useEffect(()=> {
       window.scrollTo(0,0)
       dispatch(productActions.getOneProdut(id))
@@ -156,7 +156,7 @@ export default  function ProductPage () {
     <div className="review-container">
         
         <ul>
-            {reviews.map(review => <li className="review-item" key={review._id}>
+            {product.reviews.map(review => <li className="review-item" key={review._id}>
                 <div>
                     <p>{review.user.name}</p>
                     <ReactStars 

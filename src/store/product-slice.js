@@ -1,31 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const productInterface = {
-    _id: '',
-    name: '',
-    description: '',
-    quantity: 0,
-    status: '',
-    review: [],
-    category: '',
-    freeShipping: true,
-    averageRating: '',
-    user: '',
-    image: ''
-}
+// const productInterface = {
+//     _id: '',
+//     name: '',
+//     description: '',
+//     quantity: 0,
+//     status: '',
+//     category: '',
+//     freeShipping: true,
+//     averageRating: '',
+//     user: '',
+//     image: '',
+//     reviews: []
+// }
 
 const initialState = {
     isLoading: false,
-    products: [productInterface],
+    products: [] ,
     imageUrl: '',
     addProductSuccess: false,
-    product: productInterface,
+    product: {},
     isDeleting: false,
     deleteSuccess: false,
     editSuccess: false,
     isEditing: false,
-    reviews: []
+    reviews: [],
+    getProductSuccess: null
 }
 
 
@@ -117,7 +118,12 @@ const productsSlice = createSlice({
         builder.addCase(getAllProducts.fulfilled, (state, action) => {
             state.isLoading = false
             state.products =  action.payload
+            state.getProductSuccess = true
         })
+        builder.addCase(getAllProducts.rejected, (state, action) => {
+            state.isLoading = false;
+            state.getProductSuccess = true
+        });
         builder.addCase(uploadImage.pending, state => {
             state.isLoading = true
         } )
@@ -163,7 +169,7 @@ const productsSlice = createSlice({
             state.isEditing = false
         })
         builder.addCase(getReviews.fulfilled, (state,action) => {
-            state.reviews = action.payload
+            state.product.reviews = action.payload
         })
     }
 })

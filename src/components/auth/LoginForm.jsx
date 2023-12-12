@@ -131,9 +131,7 @@ const LoginForm = () => {
           <span className="signup">
             <a
              className='signup-span'
-              onClick={() => {
-                dispatch(toggleActions.isLogin())
-              }}>
+             onClick={()=> navigate('/forgot-password')}>
               Forgot Password?
             </a>{' '}
           </span>
@@ -155,9 +153,7 @@ const LoginForm = () => {
           <span className="signup">
             <a
              className='signup-span'
-              onClick={() => {
-                dispatch(toggleActions.isLogin())
-              }}>
+              onClick={()=> navigate('/forgot-password')}>
               Forgot Password?
             </a>{' '}
           </span>
