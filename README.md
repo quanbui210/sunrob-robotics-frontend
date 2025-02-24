@@ -35,7 +35,7 @@ Live Demo: https://sunrob-robotics-quanbui210.vercel.app/
 ![admin dashboard](./src/assets/image-3.png)
 
 ### View Order History
-![order-history](./src/assets/image-3.png)
+![order-history](./src/assets/image-2.png)
 
 ### Profile 
 
